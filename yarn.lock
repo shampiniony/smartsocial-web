@@ -426,6 +426,11 @@
     "@vue/compiler-dom" "3.4.27"
     "@vue/shared" "3.4.27"
 
+"@vue/composition-api@^1.7.2":
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/@vue/composition-api/-/composition-api-1.7.2.tgz#0b656f3ec39fefc2cf40aaa8c12426bcfeae1b44"
+  integrity sha512-M8jm9J/laYrYT02665HkZ5l2fWTK4dcVg3BsDHm/pfz+MjDYwX+9FUaZyGwEyXEDonQYRCo0H7aLgdklcIELjw==
+
 "@vue/language-core@2.0.21":
   version "2.0.21"
   resolved "https://registry.yarnpkg.com/@vue/language-core/-/language-core-2.0.21.tgz#882667d0c9f07bc884f163e75eed666234df77fe"
@@ -1412,6 +1417,11 @@ vue-demi@>=0.13.0, vue-demi@>=0.14.7, vue-demi@>=0.14.8:
   resolved "https://registry.yarnpkg.com/vue-demi/-/vue-demi-0.14.8.tgz#00335e9317b45e4a68d3528aaf58e0cec3d5640a"
   integrity sha512-Uuqnk9YE9SsWeReYqK2alDI5YzciATE0r2SkA6iMAtuXvNTMNACJLJEXNXaEy94ECuBe4Sk6RzRU80kjdbIo1Q==
 
+vue-demi@^0.6.0:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/vue-demi/-/vue-demi-0.6.2.tgz#ed9633eaa69b7409cc6e8328e8a6c3d31ab39319"
+  integrity sha512-4KfwxbqsZcDz7UryD11oHa6FLK9Gzx4MIwAEcP37IbUdXuF6DHg2w9L5Zv5t+FNqsuAjEQ2NnGVIZ3u71y435Q==
+
 vue-template-compiler@^2.7.14:
   version "2.7.16"
   resolved "https://registry.yarnpkg.com/vue-template-compiler/-/vue-template-compiler-2.7.16.tgz#c81b2d47753264c77ac03b9966a46637482bb03b"
@@ -1428,6 +1438,13 @@ vue-tsc@^2.0.6:
     "@volar/typescript" "~2.3.0-alpha.15"
     "@vue/language-core" "2.0.21"
     semver "^7.5.4"
+
+vue-use-gesture@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/vue-use-gesture/-/vue-use-gesture-1.0.1.tgz#fd46a48f19711d2939732b4d594173c938982618"
+  integrity sha512-L/ToO34iJQsTeDZx/b6hzvU8PrDhIYBI6ZjhO5GXdstfWS5GyjyJe8HN+E71i7zHLCoUOofTmzc0LYYvUq0W7A==
+  dependencies:
+    vue-demi "^0.6.0"
 
 vue@^3.4.21, vue@^3.4.5:
   version "3.4.27"

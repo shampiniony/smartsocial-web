@@ -1,6 +1,6 @@
 <template>
   <Transition name="expand" mode="out-in">
-    <div v-if="drawer.visible" class="bg-primary h-[70vh] expand-content overflow-hidden">
+    <div v-show="drawer.visible" class="bg-primary h-[55vh] expand-content overflow-hidden">
       <Map></Map>
     </div>
   </Transition>
@@ -15,7 +15,7 @@ import Map from '@/components/Map.vue';
 <style scoped>
 .expand-enter-active,
 .expand-leave-active {
-  transition: height 0.3s ease-in-out;
+  transition: height 0.4s ease-in-out;
   overflow: hidden;
 }
 
@@ -26,7 +26,6 @@ import Map from '@/components/Map.vue';
 
 .expand-enter-to,
 .expand-leave-from {
-  height: 70vh;
-  /* Adjust this value to match your element's height */
+  height: 55vh;
 }
 </style>

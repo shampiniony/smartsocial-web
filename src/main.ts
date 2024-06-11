@@ -1,13 +1,22 @@
-import { createApp } from 'vue'
-import { GesturePlugin } from '@vueuse/gesture'
-import { MotionPlugin } from '@vueuse/motion'
+import { createApp } from 'vue';
+import { GesturePlugin } from '@vueuse/gesture';
+import { MotionPlugin } from '@vueuse/motion';
 import 'leaflet/dist/leaflet.css';
-import App from './App.vue'
-import './assets/index.css'
+import App from './App.vue';
+import './assets/index.css';
+import { createMemoryHistory, createRouter } from 'vue-router';
 
-const app = createApp(App)
+import Home from '@/pages/home.page.vue';
 
-app.use(GesturePlugin)
-app.use(MotionPlugin)
+const app = createApp(App);
 
-app.mount('#app')
+const router = createRouter({
+  history: createMemoryHistory(),
+  routes: [{ path: '/', name: 'home', component: Home }],
+});
+
+app.use(GesturePlugin);
+app.use(MotionPlugin);
+app.use(router);
+
+app.mount('#app');

@@ -1,20 +1,8 @@
 <template>
   <Header></Header>
-  <div class='pt-20 z-0'>
-    <LeadingSection></LeadingSection>
-    <DatePicker></DatePicker>
-    <MapContainer />
-    <PlacesSection></PlacesSection>
-  </div>
-  <FixedButton />
+  <router-view />
 </template>
 
 <script setup lang="ts">
-import Header from '@/components/Header.vue'
-import LeadingSection from '@/components/LeadingSection.vue'
-import PlacesSection from '@/components/PlacesSection.vue'
-import DatePicker from '@/components/DatePicker.vue'
-import FixedButton from '@/components/FixedButton.vue'
-import MapContainer from '@/components/MapContainer.vue'
-
+import Header from '@/models/home/header.vue'
 </script>

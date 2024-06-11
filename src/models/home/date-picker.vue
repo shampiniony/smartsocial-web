@@ -1,7 +1,9 @@
 <template>
-  <div class='pb-8 pt-4'>
+  <div :class='{ "pb-8": !drawer.visible, "pb-4": drawer.visible }' class='pt-4 transition-padding'>
     <Transition name="fade" mode='out-in'>
-      <h1 class='mx-5 text-muted-foreground font-light pb-4' :key="getDay(picked_date).date_object.getMonth()">
+      <h1 :class='{ "pb-2": drawer.visible, "pb-4": !drawer.visible }'
+        class='mx-5 text-muted-foreground font-light transition-padding'
+        :key="getDay(picked_date).date_object.getMonth()">
         {{ months[getDay(picked_date).date_object.getMonth()] }}
       </h1>
     </Transition>
@@ -15,7 +17,9 @@
 
 <script setup lang='ts'>
 import { ref, Transition } from 'vue'
-import Weekday from '@/components/Weekday.vue'
+import Weekday from '@/models/home/Weekday.vue'
+
+import { drawer } from '@/store/drawer';
 
 interface Day {
   date: number;
@@ -75,5 +79,11 @@ const picked_date = ref(0);
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+.transition-padding {
+  transition: padding 0.5s ease;
+  transition: height 0.5s ease;
+  transition: min-width 0.5s ease;
 }
 </style>

@@ -1,5 +1,12 @@
 import { createApp } from 'vue'
-import './assets/index.css'
+import { GesturePlugin } from '@vueuse/gesture'
+import { MotionPlugin } from '@vueuse/motion'
 import App from './App.vue'
+import './assets/index.css'
 
-createApp(App).mount('#app')
+const app = createApp(App)
+
+app.use(GesturePlugin)
+app.use(MotionPlugin)
+
+app.mount('#app')

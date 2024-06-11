@@ -17,7 +17,7 @@
 
 <script setup lang='ts'>
 import { ref, Transition } from 'vue'
-import Weekday from '@/models/home/Weekday.vue'
+import Weekday from '@/models/home/weekday.vue'
 
 import { drawer } from '@/store/drawer';
 

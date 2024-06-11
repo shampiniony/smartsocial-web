@@ -4,7 +4,11 @@ export default {
   content: [],
   darkMode: false,
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: "#FE4F00"
+      }
+    },
   },
   variants: {
     extend: {},

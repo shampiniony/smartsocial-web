@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-20 flex justify-between items-center px-5 fixed bg-white">
+  <div class="w-full h-20 flex justify-between items-center px-5 fixed bg-white z-50">
     <div class="flex gap-2">
       <img src="../assets/logo.svg" class="select-none pointer-events-none" />
       <div class="file leading-3 flex flex-col justify-around">

@@ -3,7 +3,7 @@
   <div class='pt-20 z-0'>
     <LeadingSection></LeadingSection>
     <DatePicker></DatePicker>
-    <Map></Map>
+    <MapContainer />
     <PlacesSection></PlacesSection>
   </div>
   <FixedButton />
@@ -15,6 +15,6 @@ import LeadingSection from '@/components/LeadingSection.vue'
 import PlacesSection from '@/components/PlacesSection.vue'
 import DatePicker from '@/components/DatePicker.vue'
 import FixedButton from '@/components/FixedButton.vue'
-import Map from '@/components/Map.vue'
+import MapContainer from '@/components/MapContainer.vue'
 
 </script>

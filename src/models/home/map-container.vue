@@ -9,7 +9,7 @@
 <script setup lang="ts">
 import { Transition } from 'vue';
 import { drawer } from '@/store/drawer.ts';
-import Map from '@/components/Map.vue';
+import Map from '@/models/home/map.vue';
 </script>
 
 <style scoped>

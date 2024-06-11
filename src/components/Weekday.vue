@@ -1,6 +1,6 @@
 <template>
   <div @click='onClick' :class='containerClasses'
-    class='snap-start flex flex-col h-18 min-w-12 justify-around cursor-pointer rounded-xl p-1 transition-colors'>
+    class='snap-start flex flex-col h-18 min-w-14 justify-around cursor-pointer rounded-xl p-2 transition-colors'>
     <p class='font-medium text-center text-lg'>
       {{ day.date }}
     </p>
@@ -32,7 +32,7 @@ const containerClasses = computed(() => ({
 
 const weekdayClasses = computed(() => ({
   'text-primary': props.day.weekday === 'СБ' || props.day.weekday === 'ВС',
-  'text-slate-500': props.day.weekday !== 'СБ' && props.day.weekday !== 'ВС',
+  'text-muted-foreground': props.day.weekday !== 'СБ' && props.day.weekday !== 'ВС',
 }));
 
 </script>

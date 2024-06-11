@@ -1,15 +1,14 @@
 <template>
-  <div class='py-8'>
+  <div class='pb-8 pt-4'>
     <Transition name="fade" mode='out-in'>
-      <h1 class='text-slate-500 font-light' :key="picked_date.date_object.getMonth()">
-        {{ months[picked_date.date_object.getMonth()] }}
+      <h1 class='text-muted-foreground font-light pb-4' :key="getDay(picked_date).date_object.getMonth()">
+        {{ months[getDay(picked_date).date_object.getMonth()] }}
       </h1>
     </Transition>
     <div class='w-full overflow-x-scroll flex gap-5 no-scrollbar snap-x snap-proximity'>
-      <Weekday v-for="(_, index) in 64" :key="index" :day="getDay(index)"
-        :isSelected="picked_date.date === getDay(index).date" @click="() =>
-          picked_date = getDay(index)
-          " />
+      <Weekday v-for="(_, index) in 64" :key="index" :day="getDay(index)" :isSelected="picked_date === index" @click="() =>
+        picked_date = index
+        " />
     </div>
   </div>
 </template>
@@ -63,11 +62,7 @@ const getDay = (offset: number) => {
   }
 }
 
-const picked_date = ref<Day>({
-  date: today.getDate(),
-  weekday: weekdays[today.getDay()],
-  date_object: today
-});
+const picked_date = ref(0);
 
 </script>
 

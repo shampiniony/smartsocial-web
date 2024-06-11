@@ -1,12 +1,14 @@
 <template>
-  <div @click='onClick' :class='containerClasses'
-    class='snap-start flex flex-col h-18 min-w-14 justify-around cursor-pointer rounded-xl p-2 transition-colors'>
-    <p class='font-medium text-center text-lg'>
-      {{ day.date }}
-    </p>
-    <p class='text-center text-xs' :class='weekdayClasses'>
-      {{ day.weekday }}
-    </p>
+  <div @click='onClick' class='pl-5 snap-start'>
+    <div :class='containerClasses'
+      class='flex flex-col h-18 min-w-14 justify-around cursor-pointer rounded-xl p-2 transition-colors'>
+      <p class='font-medium text-center text-lg'>
+        {{ day.date }}
+      </p>
+      <p class='text-center text-xs' :class='weekdayClasses'>
+        {{ day.weekday }}
+      </p>
+    </div>
   </div>
 </template>
 

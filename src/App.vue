@@ -1,6 +1,6 @@
 <template>
   <Header></Header>
-  <div class='px-5 pt-20'>
+  <div class='px-5 pt-20 z-0'>
     <LeadingSection></LeadingSection>
     <DatePicker></DatePicker>
     <PlacesSection></PlacesSection>

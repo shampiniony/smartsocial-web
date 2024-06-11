@@ -1,11 +1,11 @@
 <template>
-  <div class='pb-8 pt-4'>
+  <div class='pb-8 pt-4 -mr-5 z-10'>
     <Transition name="fade" mode='out-in'>
       <h1 class='text-muted-foreground font-light pb-4' :key="getDay(picked_date).date_object.getMonth()">
         {{ months[getDay(picked_date).date_object.getMonth()] }}
       </h1>
     </Transition>
-    <div class='w-full overflow-x-scroll flex gap-5 no-scrollbar snap-x snap-proximity'>
+    <div class='w-full -mr-5 overflow-x-scroll flex gap-5 no-scrollbar snap-x snap-proximity'>
       <Weekday v-for="(_, index) in 64" :key="index" :day="getDay(index)" :isSelected="picked_date === index" @click="() =>
         picked_date = index
         " />

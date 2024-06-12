@@ -53,5 +53,71 @@ export const places = reactive<Places>({
         },
       ],
     },
+    {
+      id: 2,
+      name: 'Музей «Калачная»',
+      description:
+        'Музей возрождает старинный городской калачный промысел. Главным объектом музейного показа является воссозданный по старинным руководствам процесс выпекания калачей. Искусство калачепечения, мастерство пекаря живёт на кончиках пальцев, это и есть уникальная технология, что являет собой нематериальное наследие.',
+      address: 'ул. Зайцева, 14',
+      location: {
+        lat: 55.105796,
+        lon: 38.763819,
+      },
+      images: [
+        {
+          src: 'https://optim.tildacdn.com/tild3264-3834-4635-a466-646134633665/-/cover/620x460/center/center/-/format/webp/kalach_03.jpg',
+        },
+        {
+          src: 'https://optim.tildacdn.com/tild6131-3433-4235-a431-656130303630/-/cover/620x460/center/center/-/format/webp/kalach_04.jpg',
+        },
+        {
+          src: 'https://optim.tildacdn.com/tild6133-3033-4337-b562-623263323461/-/cover/620x460/center/center/-/format/webp/kalach_05.jpg',
+        },
+      ],
+    },
+    {
+      id: 3,
+      name: 'Музей-Навигатор',
+      description:
+        'Музей-Навигатор расположен на стыке кремля и посада, у древних Пятницких ворот. Музейная коллекция Навигатора знакомит с артефактами, которые определили развитие города. Знакомство с раритетами начинается в музее, а продолжается и за его стенами – в «маршрутах времени» по исторической Коломне.',
+      address: 'ул. Зайцева, 14',
+      location: {
+        lat: 55.105882,
+        lon: 38.763518,
+      },
+      images: [
+        {
+          src: 'https://optim.tildacdn.com/tild3336-3863-4661-a663-633466343435/-/cover/620x460/center/center/-/format/webp/opi-mnav-03.jpg',
+        },
+        {
+          src: 'https://optim.tildacdn.com/tild3564-3638-4539-a131-313130646631/-/cover/620x460/center/center/-/format/webp/opi-mnav-01.jpg',
+        },
+        {
+          src: 'https://optim.tildacdn.com/tild6238-6465-4835-b537-303964393538/-/cover/620x460/center/center/-/format/webp/opi-mnav-02.jpg',
+        },
+      ],
+    },
+    {
+      id: 4,
+      name: 'Музей-лаборатория «Шелковая фабрика»',
+      description:
+        'Cовременное пространство на бывшей шёлковой фабрике купцов Левиных и Бабаевых первой половины XIX века. Сохранившееся здание сегодня объединяет в себе коворкинг, выставочный и конференц-зал, зарождающийся музей коломенского шёлкоткачества и лабораторию с открытым производством.',
+      address: 'ул. Зайцева, 14',
+      location: {
+        lat: 55.100766,
+        lon: 38.767005,
+      },
+      images: [
+        {
+          src: 'https://optim.tildacdn.com/tild6237-3364-4930-b337-623863356263/-/cover/620x460/center/center/-/format/webp/opi-sf-01.jpg',
+        },
+        {
+          src: 'https://optim.tildacdn.com/tild3061-6538-4363-b136-646131376361/-/cover/620x460/center/center/-/format/webp/opi-sf-02.jpg',
+        },
+        {
+          src: 'https://optim.tildacdn.com/tild3739-3661-4564-b131-356130353961/-/cover/620x460/center/center/-/format/webp/opi-sf-03.jpg',
+        },
+      ],
+    },
   ]
 });

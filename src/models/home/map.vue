@@ -22,7 +22,7 @@ import VectorSource from 'ol/source/Vector';
 import { Icon, Style } from 'ol/style';
 import Overlay from 'ol/Overlay';
 
-import { places } from '@/store/places';
+import { places } from '@/store/places.store';
 import MapPopup from '@/models/home/map-popup.vue';
 
 const popupVisible = ref(false);

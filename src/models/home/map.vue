@@ -1,10 +1,16 @@
 <template>
-  <div id="map" class="map"></div>
+  <div id="map" class="w-full h-full relative"></div>
+  <Transition name="fade" mode='out-in'>
+    <div id="popup" ref="popup" v-show="popupVisible">
+        <MapPopup v-if="places.selected != null" :place="places.all[places.selected]" />
+    </div>
+  </Transition>
 </template>
 
-<script>
-import { onMounted } from 'vue';
+<script setup lang='ts'>
+import { ref, onMounted } from 'vue';
 import 'ol/ol.css';
+import 'ol/ol.css'; // Ensure OpenLayers CSS is imported
 import { Map, View } from 'ol';
 import TileLayer from 'ol/layer/Tile';
 import OSM from 'ol/source/OSM';
@@ -14,65 +20,98 @@ import Point from 'ol/geom/Point';
 import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
 import { Icon, Style } from 'ol/style';
+import Overlay from 'ol/Overlay';
 
-export default {
-  name: 'Map',
-  setup() {
-    onMounted(() => {
-      // Create the map
-      const map = new Map({
-        target: 'map',
-        layers: [
-          new TileLayer({
-            source: new OSM(),
-          }),
-        ],
-        view: new View({
-          center: fromLonLat([38.7689, 55.0938]),
-          zoom: 13,
-        }),
-        controls: []
-      });
+import { places } from '@/store/places';
+import MapPopup from '@/models/home/map-popup.vue';
 
-      // Example markers
-      const markers = [
-        { lon: -0.09, lat: 51.5, popup: 'Marker 1' },
-        { lon: -0.1, lat: 51.51, popup: 'Marker 2' },
-      ];
+const popupVisible = ref(false);
+const popup = ref(null);
 
-      // Create a vector layer for the markers
-      const vectorSource = new VectorSource();
+onMounted(() => {
+  const map = new Map({
+    target: 'map',
+    layers: [
+      new TileLayer({
+        source: new OSM(),
+      }),
+    ],
+    view: new View({
+      center: fromLonLat([38.7689, 55.0938]),
+      zoom: 13,
+    }),
+    controls: []
+  });
 
-      markers.forEach(marker => {
-        const iconFeature = new Feature({
-          geometry: new Point(fromLonLat([marker.lon, marker.lat])),
-          name: marker.popup,
-        });
+  const vectorSource = new VectorSource();
+  const markers = places.all.map(x => ({
+    lon: x.location.lon,
+    lat: x.location.lat,
+    popup: x
+  }));
 
-        iconFeature.setStyle(new Style({
-          image: new Icon({
-            anchor: [0.5, 1],
-            src: 'path/to/your/custom-icon.png', // Path to custom icon
-          }),
-        }));
-
-        vectorSource.addFeature(iconFeature);
-      });
-
-      const vectorLayer = new VectorLayer({
-        source: vectorSource,
-      });
-
-      map.addLayer(vectorLayer);
+  markers.forEach(marker => {
+    const iconFeature = new Feature({
+      geometry: new Point(fromLonLat([marker.lon, marker.lat])),
+      name: marker.popup.id,
     });
-  },
-};
+
+    iconFeature.setStyle(new Style({
+      image: new Icon({
+        anchor: [0.5, 1],
+        src: './pin.png',
+        scale: 0.5
+      }),
+    }));
+
+    vectorSource.addFeature(iconFeature);
+  });
+
+  const vectorLayer = new VectorLayer({
+    source: vectorSource,
+  });
+
+  map.addLayer(vectorLayer);
+
+  const overlay = new Overlay({
+    element: popup.value ? popup.value : undefined,
+    positioning: 'bottom-center',
+    stopEvent: false,
+    offset: [190, 20]
+  });
+  map.addOverlay(overlay);
+
+  map.on('singleclick', function(evt) {
+    const feature = map.forEachFeatureAtPixel(evt.pixel, function(feature) {
+      return feature;
+    });
+
+    if (feature) {
+      const coordinates = feature.getGeometry().getCoordinates();
+      overlay.setPosition(coordinates);
+      popupVisible.value = true;
+      places.selected = feature.get('name');
+    } else {
+      popupVisible.value = false;
+    }
+  });
+});
+
 </script>
 
-<style>
-.map {
-  height: 100%;
-  width: 100%;
-  z-index: -10;
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-to,
+.fade-leave-from {
+  opacity: 1;
 }
 </style>

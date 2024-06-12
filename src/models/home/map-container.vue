@@ -11,7 +11,7 @@
 
 <script setup lang="ts">
 import { Transition } from 'vue';
-import { drawer } from '@/store/drawer.ts';
+import { drawer } from '@/store/drawer.store';
 import Map from '@/models/home/map.vue';
 </script>
 

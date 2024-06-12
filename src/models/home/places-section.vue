@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 import PlaceCard from './place-card.vue'
-import { drawer } from '@/store/drawer'
+import { drawer } from '@/store/drawer.store'
 import { places } from '@/store/places'
 
 const dragHandler = ({ dragging }: any) => {

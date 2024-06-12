@@ -7,9 +7,7 @@
       <h1 class="text-xl">Все места</h1>
     </div>
     <div class="py-2 px-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-      <PlaceCard />
-      <PlaceCard />
-      <PlaceCard />
+      <PlaceCard v-for='place in places.all' :place='place' />
     </div>
   </div>
 </template>
@@ -17,6 +15,7 @@
 <script setup lang="ts">
 import PlaceCard from './place-card.vue'
 import { drawer } from '@/store/drawer'
+import { places } from '@/store/places'
 
 const dragHandler = ({ dragging }: any) => {
   if (drawer.visible && dragging) drawer.visible = false;

@@ -1,6 +1,9 @@
 <template>
   <Transition name="expand" mode="out-in">
     <div v-show="drawer.visible" class="bg-primary h-[55vh] expand-content overflow-hidden">
+      <div class='h-20 w-20 bg-white fixed bottom-0'>
+
+      </div>
       <Map></Map>
     </div>
   </Transition>

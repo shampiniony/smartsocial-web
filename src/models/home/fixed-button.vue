@@ -14,7 +14,6 @@
 
 <script setup lang='ts'>
 import { drawer } from '@/store/drawer';
-import { ref } from 'vue';
 
 const scrollToTop = () => {
   window.scrollTo({

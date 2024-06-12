@@ -1,8 +1,9 @@
+<!-- Todo: fix this messy code -->
+
 <template>
   <div :class='{ "pb-8": !drawer.visible, "pb-4": drawer.visible }' class='pt-4 transition-padding'>
     <Transition name="fade" mode='out-in'>
-      <h1 :class='{ "pb-2": drawer.visible, "pb-4": !drawer.visible }'
-        class='mx-5 text-muted-foreground font-light'
+      <h1 :class='{ "pb-2": drawer.visible, "pb-4": !drawer.visible }' class='mx-5 text-muted-foreground font-light'
         :key="getDay(picked_date).date_object.getMonth()">
         {{ months[getDay(picked_date).date_object.getMonth()] }}
       </h1>
@@ -54,7 +55,7 @@ const months = [
   "ДЕКАБРЬ",
 ];
 
-const getDay = (offset: number) => {
+const getDay = (offset: number) : Day => {
 
   const new_date = new Date(today);
   new_date.setDate(today.getDate() + offset);

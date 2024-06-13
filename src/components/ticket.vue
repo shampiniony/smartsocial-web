@@ -11,8 +11,9 @@
         <div @click='ticket.quantity++' class='p-2 pr-4 cursor-pointer font-light text-2xl'>+</div>
       </div>
     </div>
-    <div v-if='props.variant == "full"' class='flex flex-col justify-center text-muted-foreground cursor-pointer'>
-      <div class='flex items-center gap-2'>
+    <div v-if='props.variant == "full"'
+      class='hidden md:flex flex-col justify-center text-muted-foreground cursor-pointer'>
+      <div @click='ticket.quantity = 0' class='flex items-center gap-2'>
         <img class='h-5 w-5' src='@/assets/icons/trash.svg' alt=''>
         <p class='text-lg'>Удалить</p>
       </div>

@@ -1,5 +1,7 @@
-import { reactive, watch } from 'vue';
+import { reactive, watch, nextTick } from 'vue';
 import { CartTicket } from '@/types/cart/cart-ticket.interface';
+
+let isUpdating = false;
 
 interface CartPlace {
   name: string;
@@ -72,7 +74,20 @@ export const cart = reactive<CartProps>(loadCartFromLocalStorage());
 watch(
   () => cart,
   (newCart) => {
+    if (isUpdating) return;
+    isUpdating = true;
+
+    newCart.items.forEach((place) => {
+      place.tickets = place.tickets.filter((ticket) => ticket.quantity > 0);
+    });
+
+    newCart.items = newCart.items.filter((x) => x.tickets.length > 0);
+
     localStorage.setItem('cart', JSON.stringify(newCart));
+
+    nextTick(() => {
+      isUpdating = false;
+    });
   },
   { deep: true }
 );

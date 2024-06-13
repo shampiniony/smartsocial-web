@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang='ts'>
-import { drawer } from '@/store/drawer';
+import { drawer } from '@/store/drawer.store';
 
 const scrollToTop = () => {
   window.scrollTo({

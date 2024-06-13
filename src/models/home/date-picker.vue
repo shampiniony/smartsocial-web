@@ -20,7 +20,7 @@
 import { ref, Transition } from 'vue'
 import Weekday from '@/models/home/week-day.vue'
 
-import { drawer } from '@/store/drawer';
+import { drawer } from '@/store/drawer.store';
 
 interface Day {
   date: number;

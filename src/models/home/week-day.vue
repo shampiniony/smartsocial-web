@@ -16,7 +16,7 @@
 <script setup lang='ts'>
 
 import { computed } from 'vue';
-import { drawer } from '@/store/drawer';
+import { drawer } from '@/store/drawer.store';
 
 interface Day {
   date: number;

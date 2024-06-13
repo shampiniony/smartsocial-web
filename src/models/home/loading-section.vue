@@ -9,7 +9,7 @@
 
 <script setup lang='ts'>
 import { Transition } from 'vue';
-import { drawer } from '@/store/drawer';
+import { drawer } from '@/store/drawer.store';
 
 </script>
 

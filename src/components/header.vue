@@ -7,5 +7,15 @@
         <h1 class="font-light">Афиша Коломны</h1>
       </div>
     </div>
+    <div @click="cart.visible = true" class="cursor-pointer flex gap-2">
+        <img class="h-6 w-6" src="../assets/icons/cart.svg" alt="">
+        <p class='hidden md:block'>
+          Корзина
+        </p>
+    </div>
   </div>
 </template>
+
+<script setup>
+import { cart } from '@/store/cart.store';
+</script>

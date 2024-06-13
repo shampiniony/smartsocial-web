@@ -14,8 +14,8 @@
 
 <script setup lang="ts">
 import PlaceCard from './place-card.vue'
-import { drawer } from '@/store/drawer'
-import { places } from '@/store/places'
+import { drawer } from '@/store/drawer.store'
+import { places } from '@/store/places.store'
 
 const dragHandler = ({ dragging }: any) => {
   if (drawer.visible && dragging) drawer.visible = false;

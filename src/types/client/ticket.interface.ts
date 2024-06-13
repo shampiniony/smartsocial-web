@@ -1,7 +1,5 @@
-export interface Ticket {
-  id: number;
-  name: string;
-  type: string;
-  price: number;
-  personas: number;
+import { AdminTicket } from '@/types/admin/admin-ticket.interface';
+
+export interface Ticket extends AdminTicket {
+  time: Date;
 }

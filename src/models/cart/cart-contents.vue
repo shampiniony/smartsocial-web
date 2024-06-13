@@ -1,5 +1,8 @@
 <template>
   <div>
+    
+  </div>
+  <div>
     <div class="flex flex-col gap-1">
       <div class='flex justify-between items-center'>
         <h1 class='text-3xl'>Корзина</h1>
@@ -7,13 +10,13 @@
       </div>
       <p class='text-lg font-light'>Составьте свой идеальный маршрут!</p>
     </div>
-    <div class='flex gap-5 flex-col pt-10'>
-      <div v-for='section in cart.items'>
-        <p class='pb-2'>{{ section.name }}</p>
-        <TransitionGroup class='flex gap-2 flex-col' name='fade' tag='div'>
-          <Ticket v-for='(ticket, index) in section.tickets' :key='index' :ticket='ticket' variant='full' />
-        </TransitionGroup>
-      </div>
+  </div>
+  <div class='flex gap-5 flex-col pt-10'>
+    <div v-for='section in cart.items'>
+      <p class='pb-2'>{{ section.name }}</p>
+      <TransitionGroup class='flex gap-2 flex-col' name='fade' tag='div'>
+        <Ticket v-for='(ticket, index) in section.tickets' :key='index' :ticket='ticket' variant='full' />
+      </TransitionGroup>
     </div>
   </div>
   <div class='flex flex-col gap-10'>

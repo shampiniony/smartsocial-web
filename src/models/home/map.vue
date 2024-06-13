@@ -24,11 +24,22 @@ import Overlay from 'ol/Overlay';
 
 import { places } from '@/store/places.store';
 import MapPopup from '@/models/home/map-popup.vue';
+import getPlaces from '@/api/places.api';
 
 const popupVisible = ref(false);
 const popup = ref(null);
 
-onMounted(() => {
+const now = new Date();
+const from = new Date(now.setHours(0, 0, 0, 0));
+const to = new Date(now.setHours(24, 0, 0, 0));
+
+const fetchPlaces = async () => {
+  await getPlaces(from, to);
+};
+
+onMounted(async () => {
+  await fetchPlaces();
+
   const map = new Map({
     target: 'map',
     layers: [
@@ -44,6 +55,7 @@ onMounted(() => {
   });
 
   const vectorSource = new VectorSource();
+
   const markers = places.all.map(x => ({
     lon: x.location.lon,
     lat: x.location.lat,
@@ -82,6 +94,8 @@ onMounted(() => {
   map.addOverlay(overlay);
 
   map.on('singleclick', function (evt) {
+    console.log(places)
+
     const feature = map.forEachFeatureAtPixel(evt.pixel, function (feature) {
       return feature;
     });

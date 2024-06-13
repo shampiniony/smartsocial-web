@@ -8,9 +8,11 @@ interface CartPlace {
   tickets: CartTicket[];
 }
 
+type CartStatus = 'contents' | 'payment';
 export interface CartProps {
   id: number;
   visible: boolean;
+  status: CartStatus;
   items: CartPlace[];
 }
 
@@ -27,6 +29,7 @@ const loadCartFromLocalStorage = (): CartProps => {
   return {
     id: 0,
     visible: true,
+    status: 'contents',
     items: [
       {
         name: 'Музей истории со вкусом «Коломенская пастила»',

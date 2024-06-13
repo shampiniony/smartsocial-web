@@ -2,7 +2,7 @@
   <div class='h-26 w-full border rounded-3xl flex p-5 px-8 gap-2 justify-between'>
     <div class='flex flex-col justify-between'>
       <p>Взрослый билет</p>
-      <p class='text-2xl'>1 500 ₽</p>
+      <p class='text-2xl'>{{ ticket.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") }} ₽</p>
     </div>
     <div class='flex flex-col justify-center'>
       <div class='border rounded-full flex justify-between items-center'>

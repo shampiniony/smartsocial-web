@@ -2,7 +2,6 @@
   <Sheet :open="cart.visible" @update:open="() => {
     cart.visible = false;
   }">
-    <SheetTrigger>Open</SheetTrigger>
     <SheetContent class="p-10 pt-5 flex flex-col justify-between">
       <CartContents v-if='cart.status == "contents"' />
       <CartPayment v-if='cart.status == "payment"' />

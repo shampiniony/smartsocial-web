@@ -1,8 +1,5 @@
 <template>
   <div>
-    
-  </div>
-  <div>
     <div class="flex flex-col gap-1">
       <div class='flex justify-between items-center'>
         <h1 class='text-3xl'>Корзина</h1>

@@ -12,7 +12,7 @@
           <FormItem class="w-full">
             <FormLabel>Имя</FormLabel>
             <FormControl>
-              <Input placeholder="John" v-bind="field" />
+              <Input placeholder="Иван" v-bind="field" />
             </FormControl>
             <FormDescription />
             <FormMessage>{{ errorMessage }}</FormMessage>
@@ -22,7 +22,7 @@
           <FormItem class="w-full">
             <FormLabel>Фамилия</FormLabel>
             <FormControl>
-              <Input placeholder="Doe" v-bind="field" />
+              <Input placeholder="Иванов" v-bind="field" />
             </FormControl>
             <FormDescription />
             <FormMessage>{{ errorMessage }}</FormMessage>
@@ -33,7 +33,7 @@
         <FormItem>
           <FormLabel>Электронная Почта</FormLabel>
           <FormControl>
-            <Input placeholder="johndoe@example.com" v-bind="field" />
+            <Input placeholder="ivanivanov@example.com" v-bind="field" />
           </FormControl>
           <FormDescription />
           <FormMessage>{{ errorMessage }}</FormMessage>
@@ -67,6 +67,7 @@ import { useForm } from 'vee-validate'
 import { toTypedSchema } from '@vee-validate/zod'
 import * as z from 'zod'
 import { computed } from 'vue'
+import { createPayment } from '@/api/payment.api'
 
 import {
   FormControl,
@@ -99,5 +100,11 @@ const form = useForm({
 
 const onSubmit = form.handleSubmit((values) => {
   console.log('Form submitted!', values)
+  if (cart.id != null) createPayment(cart.id, {
+    email: values.email,
+    phone: values.phone,
+    first_name: values.firstName,
+    last_name: values.lastName
+  })
 })
 </script>

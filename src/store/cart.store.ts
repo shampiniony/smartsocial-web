@@ -1,5 +1,6 @@
 import { reactive, watch, nextTick } from 'vue';
 import { CartTicket } from '@/types/cart/cart-ticket.interface';
+import { updateCart } from '@/api/cart.api';
 
 let isUpdating = false;
 
@@ -10,7 +11,7 @@ interface CartPlace {
 
 type CartStatus = 'contents' | 'payment';
 export interface CartProps {
-  id: number;
+  id: number | null;
   visible: boolean;
   status: CartStatus;
   items: CartPlace[];
@@ -27,7 +28,7 @@ const loadCartFromLocalStorage = (): CartProps => {
     }
   }
   return {
-    id: 0,
+    id: null,
     visible: true,
     status: 'contents',
     items: [
@@ -76,7 +77,7 @@ export const cart = reactive<CartProps>(loadCartFromLocalStorage());
 
 watch(
   () => cart,
-  (newCart) => {
+  async (newCart) => {
     if (isUpdating) return;
     isUpdating = true;
 
@@ -85,6 +86,7 @@ watch(
     });
 
     newCart.items = newCart.items.filter((x) => x.tickets.length > 0);
+    newCart = await updateCart(newCart);
 
     localStorage.setItem('cart', JSON.stringify(newCart));
 

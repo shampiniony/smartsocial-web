@@ -2,7 +2,7 @@
   <div id="map" class="w-full h-full relative"></div>
   <Transition name="fade" mode='out-in'>
     <div id="popup" ref="popup" v-show="popupVisible">
-        <MapPopup v-if="places.selected != null" :place="places.all[places.selected]" />
+      <MapPopup v-if="places.selected != null" :place="places.all[places.selected]" />
     </div>
   </Transition>
 </template>
@@ -81,8 +81,8 @@ onMounted(() => {
   });
   map.addOverlay(overlay);
 
-  map.on('singleclick', function(evt) {
-    const feature = map.forEachFeatureAtPixel(evt.pixel, function(feature) {
+  map.on('singleclick', function (evt) {
+    const feature = map.forEachFeatureAtPixel(evt.pixel, function (feature) {
       return feature;
     });
 

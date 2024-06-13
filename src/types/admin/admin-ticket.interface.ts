@@ -1,5 +1,9 @@
-import { Ticket } from '@/types/client/ticket.interface';
+type TicketType = 'family' | 'group' | 'adult' | 'child' | 'discount';
 
-export interface AdminTicket extends Ticket {
-  event_id: number;
+export interface AdminTicket {
+  id: number;
+  name: string;
+  type: TicketType;
+  price: number;
+  personas: number;
 }

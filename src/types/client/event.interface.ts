@@ -1,5 +1,3 @@
-import { Ticket } from '@/types/client/ticket.interface';
-
 export interface Event {
   id: number;
   place_id: number;
@@ -9,5 +7,4 @@ export interface Event {
   capacity: number;
   start_datetime: Date;
   end_datetime: Date;
-  tickets: Ticket[];
 }

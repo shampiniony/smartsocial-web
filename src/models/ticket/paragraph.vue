@@ -12,5 +12,4 @@ const { customClass } = props;
 </script>
 
 <style scoped>
-/* Добавьте свои стили, если необходимо */
 </style>

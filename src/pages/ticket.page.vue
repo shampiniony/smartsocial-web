@@ -5,7 +5,6 @@
       <p class="text-lg text-center">Билеты отправлены на вашу электронную почту</p>
       <div class="p-2 md:py-6 md:px-8 border-2 w-[98%] rounded-3xl">
         <div class="flex gap-x-2 md:gap-x-6">
-
           <div class="flex flex-col gap-y-4">
             <Paragraph class="md:w-max">Номер платежа</Paragraph>
             <Paragraph>Статус</Paragraph>

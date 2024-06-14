@@ -4,20 +4,14 @@ import { updateCart } from '@/api/cart.api';
 
 let isUpdating = false;
 
-interface CartPlace {
-  name: string;
-  tickets: CartTicket[];
-}
-
 type CartStatus = 'contents' | 'payment';
 export interface CartProps {
   id: number | null;
   visible: boolean;
   status: CartStatus;
-  items: CartPlace[];
+  items: CartTicket[];
 }
 
-// Helper function to load cart data from localStorage
 const loadCartFromLocalStorage = (): CartProps => {
   const savedCart = localStorage.getItem('cart');
   if (savedCart) {
@@ -43,11 +37,7 @@ watch(
     if (isUpdating) return;
     isUpdating = true;
 
-    newCart.items.forEach((place) => {
-      place.tickets = place.tickets.filter((ticket) => ticket.quantity > 0);
-    });
-
-    newCart.items = newCart.items.filter((x) => x.tickets.length > 0);
+    newCart.items = cart.items.filter((item) => item.quantity > 0);
     newCart = await updateCart(newCart);
 
     newCart.visible = cart.visible;

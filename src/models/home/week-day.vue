@@ -4,10 +4,10 @@
       class='flex flex-col justify-around cursor-pointer rounded-xl p-2 transition-colors transition-padding'>
       <p :class='{ "text-xs": drawer.visible, "text-lg": !drawer.visible }'
         class='font-medium text-center transition-padding'>
-        {{ day.date }}
+        {{ date.getDate() }}
       </p>
       <p class='text-center text-xs' :class='weekdayClasses'>
-        {{ day.weekday }}
+        {{ getWeekday(date) }}
       </p>
     </div>
   </div>
@@ -18,16 +18,27 @@
 import { computed } from 'vue';
 import { drawer } from '@/store/drawer.store';
 
-interface Day {
-  date: number;
-  weekday: string;
-}
 
 const props = defineProps<{
-  day: Day;
+  date: Date;
   isSelected: boolean;
   onClick: () => void;
 }>();
+
+
+const weekdays = [
+  "ПН",
+  "ВТ",
+  "СР",
+  "ЧТ",
+  "ПТ",
+  "СБ",
+  "ВС",
+];
+
+const getWeekday = (date: Date) => {
+  return weekdays[date.getDay()];
+}
 
 const containerClasses = computed(() => ({
   'border': props.isSelected,
@@ -39,8 +50,8 @@ const containerClasses = computed(() => ({
 }));
 
 const weekdayClasses = computed(() => ({
-  'text-primary': props.day.weekday === 'СБ' || props.day.weekday === 'ВС',
-  'text-muted-foreground': props.day.weekday !== 'СБ' && props.day.weekday !== 'ВС',
+  'text-primary': props.date.getDay() > 4,
+  'text-muted-foreground': props.date.getDay() <= 4,
 }));
 
 </script>

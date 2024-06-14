@@ -13,9 +13,23 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted } from 'vue'
 import PlaceCard from './place-card.vue'
 import { drawer } from '@/store/drawer.store'
 import { places } from '@/store/places.store'
+import getPlaces from '@/api/places.api'
+
+const now = new Date();
+const from = new Date(now.setHours(0, 0, 0, 0));
+const to = new Date(now.setHours(24, 0, 0, 0));
+
+const fetchPlaces = async () => {
+  await getPlaces(from, to);
+};
+
+onMounted(() => {
+  fetchPlaces();
+});
 
 const dragHandler = ({ dragging }: any) => {
   if (drawer.visible && dragging) drawer.visible = false;

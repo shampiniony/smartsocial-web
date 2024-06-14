@@ -17,5 +17,4 @@ import { defineProps } from 'vue';
 import { Place } from '@/types/client/place.interface';
 
 defineProps<{ place: Place }>();
-
 </script>

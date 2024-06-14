@@ -1,5 +1,6 @@
 import { reactive, watch, nextTick } from 'vue';
 import { CartTicket } from '@/types/cart/cart-ticket.interface';
+import { updateCart } from '@/api/cart.api';
 
 let isUpdating = false;
 
@@ -8,9 +9,11 @@ interface CartPlace {
   tickets: CartTicket[];
 }
 
+type CartStatus = 'contents' | 'payment';
 export interface CartProps {
-  id: number;
+  id: number | null;
   visible: boolean;
+  status: CartStatus;
   items: CartPlace[];
 }
 
@@ -25,47 +28,10 @@ const loadCartFromLocalStorage = (): CartProps => {
     }
   }
   return {
-    id: 0,
-    visible: true,
-    items: [
-      {
-        name: 'Музей истории со вкусом «Коломенская пастила»',
-        tickets: [
-          {
-            quantity: 2,
-            time: new Date(),
-            id: 1,
-            name: 'Взрослый билет',
-            type: 'adult',
-            price: 1500,
-            personas: 1,
-          },
-          {
-            quantity: 1,
-            time: new Date(),
-            id: 2,
-            name: 'Детский Билет',
-            type: 'child',
-            price: 1000,
-            personas: 1,
-          },
-        ],
-      },
-      {
-        name: 'Центр социальных инноваций в сфере культуры «Библиотека наследия»',
-        tickets: [
-          {
-            quantity: 2,
-            time: new Date(),
-            id: 3,
-            name: 'Взрослый билет',
-            type: 'adult',
-            price: 1500,
-            personas: 1,
-          },
-        ],
-      },
-    ],
+    id: null,
+    visible: false,
+    status: 'contents',
+    items: [],
   };
 };
 
@@ -73,7 +39,7 @@ export const cart = reactive<CartProps>(loadCartFromLocalStorage());
 
 watch(
   () => cart,
-  (newCart) => {
+  async (newCart) => {
     if (isUpdating) return;
     isUpdating = true;
 
@@ -82,6 +48,9 @@ watch(
     });
 
     newCart.items = newCart.items.filter((x) => x.tickets.length > 0);
+    newCart = await updateCart(newCart);
+
+    newCart.visible = cart.visible;
 
     localStorage.setItem('cart', JSON.stringify(newCart));
 
@@ -90,4 +59,11 @@ watch(
     });
   },
   { deep: true }
+);
+
+watch(
+  () => cart.visible,
+  () => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }
 );

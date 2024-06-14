@@ -1,6 +1,6 @@
 <template>
-  <Header/>
-  <Sheet/>
+  <Header />
+  <Sheet />
   <router-view />
 </template>
 

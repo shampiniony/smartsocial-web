@@ -4,7 +4,7 @@ import { places } from '@/store/places.store';
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
-const getPlaces = async (from: Date, to: Date) => {
+const getPlaces = async (date: Date) => {
   try {
     const response = await axios.get(`${apiUrl}/api/v1/places/`);
 

@@ -29,47 +29,9 @@ const loadCartFromLocalStorage = (): CartProps => {
   }
   return {
     id: null,
-    visible: true,
+    visible: false,
     status: 'contents',
-    items: [
-      {
-        name: 'Музей истории со вкусом «Коломенская пастила»',
-        tickets: [
-          {
-            quantity: 2,
-            time: new Date(),
-            id: 1,
-            name: 'Взрослый билет',
-            type: 'adult',
-            price: 1500,
-            personas: 1,
-          },
-          {
-            quantity: 1,
-            time: new Date(),
-            id: 2,
-            name: 'Детский Билет',
-            type: 'child',
-            price: 1000,
-            personas: 1,
-          },
-        ],
-      },
-      {
-        name: 'Центр социальных инноваций в сфере культуры «Библиотека наследия»',
-        tickets: [
-          {
-            quantity: 2,
-            time: new Date(),
-            id: 3,
-            name: 'Взрослый билет',
-            type: 'adult',
-            price: 1500,
-            personas: 1,
-          },
-        ],
-      },
-    ],
+    items: [],
   };
 };
 
@@ -88,6 +50,8 @@ watch(
     newCart.items = newCart.items.filter((x) => x.tickets.length > 0);
     newCart = await updateCart(newCart);
 
+    newCart.visible = cart.visible;
+
     localStorage.setItem('cart', JSON.stringify(newCart));
 
     nextTick(() => {
@@ -95,4 +59,11 @@ watch(
     });
   },
   { deep: true }
+);
+
+watch(
+  () => cart.visible,
+  () => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }
 );

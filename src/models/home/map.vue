@@ -8,8 +8,7 @@
 </template>
 
 <script setup lang='ts'>
-import { ref, onMounted } from 'vue';
-import 'ol/ol.css';
+import { ref, onMounted, watch } from 'vue';
 import 'ol/ol.css'; // Ensure OpenLayers CSS is imported
 import { Map, View } from 'ol';
 import TileLayer from 'ol/layer/Tile';
@@ -24,44 +23,13 @@ import Overlay from 'ol/Overlay';
 
 import { places } from '@/store/places.store';
 import MapPopup from '@/models/home/map-popup.vue';
-import getPlaces from '@/api/places.api';
 
 const popupVisible = ref(false);
 const popup = ref(null);
+const vectorSource = new VectorSource();
 
-const now = new Date();
-const from = new Date(now.setHours(0, 0, 0, 0));
-const to = new Date(now.setHours(24, 0, 0, 0));
-
-const fetchPlaces = async () => {
-  await getPlaces(from, to);
-};
-
-onMounted(async () => {
-  await fetchPlaces();
-
-  const map = new Map({
-    target: 'map',
-    layers: [
-      new TileLayer({
-        source: new OSM(),
-      }),
-    ],
-    view: new View({
-      center: fromLonLat([38.7689, 55.0938]),
-      zoom: 13,
-    }),
-    controls: []
-  });
-
-  const vectorSource = new VectorSource();
-
-  const markers = places.all.map(x => ({
-    lon: x.location.lon,
-    lat: x.location.lat,
-    popup: x
-  }));
-
+const addMarkers = (markers) => {
+  vectorSource.clear();
   markers.forEach(marker => {
     const iconFeature = new Feature({
       geometry: new Point(fromLonLat([marker.lon, marker.lat])),
@@ -77,6 +45,22 @@ onMounted(async () => {
     }));
 
     vectorSource.addFeature(iconFeature);
+  });
+};
+
+onMounted(async () => {
+  const map = new Map({
+    target: 'map',
+    layers: [
+      new TileLayer({
+        source: new OSM(),
+      }),
+    ],
+    view: new View({
+      center: fromLonLat([38.7689, 55.0938]),
+      zoom: 13,
+    }),
+    controls: []
   });
 
   const vectorLayer = new VectorLayer({
@@ -94,14 +78,13 @@ onMounted(async () => {
   map.addOverlay(overlay);
 
   map.on('singleclick', function (evt) {
-    console.log(places)
-
     const feature = map.forEachFeatureAtPixel(evt.pixel, function (feature) {
       return feature;
     });
 
     if (feature) {
-      const coordinates = feature.getGeometry().getCoordinates();
+      // @ts-ignore
+      const coordinates = feature.getGeometry().getCoordinates() ?? [0, 0];
       overlay.setPosition(coordinates);
       popupVisible.value = true;
       places.selected = feature.get('name');
@@ -109,6 +92,22 @@ onMounted(async () => {
       popupVisible.value = false;
     }
   });
+
+  // Initial marker addition
+  addMarkers(places.all.map(x => ({
+    lon: x.location.lon,
+    lat: x.location.lat,
+    popup: x
+  })));
+
+  // Watch for changes in places store
+  watch(() => places.all, (newPlaces) => {
+    addMarkers(newPlaces.map(x => ({
+      lon: x.location.lon,
+      lat: x.location.lat,
+      popup: x
+    })));
+  }, { deep: true });
 });
 
 </script>

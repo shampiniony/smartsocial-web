@@ -9,7 +9,7 @@
 				<h1 class="pt-4 text-2xl">{{ props.place.name }}
 					<!-- Музей истории со вкусом «Коломенская пастила» -->
 				</h1>
-				<h3 class="text-gray-500 mt-2">{{ props.place.description }}</h3>
+				<h3 class="text-gray-500 mt-2">{{ props.place.address }}</h3>
 				<div class="px-3 py-4 md:px-4 md:py-8 border-2 rounded-3xl mt-4">
 					<div class="flex justify-between">
 						<h6 class="text-lg">О месте</h6>
@@ -52,11 +52,12 @@
 			</DialogContent>
 		</Dialog>
 	</div>
+
 	<TimeLine :events='events' />
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import placeImage from '@/assets/place.jpg'
 import arrowUp from '@/assets/icons/arrow-up.svg'
 import { defineProps } from 'vue';
@@ -102,9 +103,16 @@ const toggleText = () => {
 	isTextVisible.value = !isTextVisible.value
 }
 
+// onMounted(async () => {
+// 	events.value = await getEvents(props.place.id, date.value.toDate("Etc/GMT+3")) ?? [];
+// 	console.log(events.value)
+// })
+
 watch(date, async () => {
 	events.value = await getEvents(props.place.id, date.value.toDate("Etc/GMT+3")) ?? [];
 	console.log(events.value)
+}, {
+	immediate: true
 });
 
 </script>

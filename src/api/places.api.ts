@@ -54,7 +54,15 @@ export const getEvents = async (id: number, date: Date) => {
       )}&end_datetime=${formatDateToISO(endDate)}`
     );
 
-    return response.data;
+    const timeResponse = response.data.map((data) => (
+      {
+        ...data,
+        start_datetime: new Date(data.start_datetime),
+        end_datetime: new Date(data.end_datetime)
+      }
+    ))
+
+    return timeResponse;
   } catch (error) {
     console.error('Error fetching places:', error);
   }

@@ -5,7 +5,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 
 const routes = [
   {
-    path: '/place',
+    path: '/place/:id',
     name: 'Place',
     component: placePage,
   },

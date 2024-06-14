@@ -38,7 +38,10 @@ watch(
     isUpdating = true;
 
     newCart.items = cart.items.filter((item) => item.quantity > 0);
-    newCart = await updateCart(newCart);
+    newCart = {
+      ...newCart,
+      ...(await updateCart(newCart)),
+    };
 
     newCart.visible = cart.visible;
 

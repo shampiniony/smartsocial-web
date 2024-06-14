@@ -9,12 +9,12 @@
     </div>
   </div>
   <div class='flex gap-5 flex-col pt-10'>
-    <div v-for='section in cart.items'>
-      <p class='pb-2'>{{ section.name }}</p>
-      <TransitionGroup class='flex gap-2 flex-col' name='fade' tag='div'>
-        <Ticket v-for='(ticket, index) in section.tickets' :key='index' :ticket='ticket' variant='full' />
-      </TransitionGroup>
-    </div>
+    <!-- <div v-for='section in cart.items'> -->
+    <!-- <p class='pb-2'>{{ section.name }}</p> -->
+    <TransitionGroup class='flex gap-2 flex-col' name='fade' tag='div'>
+      <Ticket v-for='(ticket, index) in cart.items' :key='index' :ticket='ticket' variant='full' />
+    </TransitionGroup>
+    <!-- </div> -->
   </div>
   <div class='flex flex-col gap-10'>
     <div class="flex justify-between items-center">
@@ -35,10 +35,8 @@ import { cart } from '@/store/cart.store';
 import Button from '@/components/ui/button/CustomButton.vue';
 import Ticket from '@/components/ticket.vue';
 
-const total = computed(() => cart.items.reduce((total, place) => {
-  return total + place.tickets.reduce((placeTotal, ticket) => {
-    return placeTotal + (ticket.quantity * ticket.price);
-  }, 0);
+const total = computed(() => cart.items.reduce((total, ticket) => {
+  return total + (ticket.quantity * ticket.price);
 }, 0))
 </script>
 

@@ -22,7 +22,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="pt-20 bg-secondary">
+  <div class="pt-20 z-0 bg-secondary">
     <PlaceInfo v-if="place" 
       :title="place.name" 
       :info="place.description" 

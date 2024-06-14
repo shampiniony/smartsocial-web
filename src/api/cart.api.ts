@@ -16,7 +16,7 @@ interface ApiTicket {
 
 async function fetchTicketDetails(ticketId: number): Promise<CartTicket> {
   const response = await axios.get<CartTicket>(
-    `http://localhost:8000/api/v1/tickets/${ticketId}/`
+    `${apiUrl}/api/v1/tickets/${ticketId}/`
   );
   return response.data;
 }
@@ -63,7 +63,7 @@ const convertCart = (cart: CartProps): ApiCart => {
 export const createCart = async (cart: CartProps): Promise<CartProps> => {
   const data = convertCart(cart);
 
-  const response = await axios.post<CartProps>(apiUrl + '/api/v1/carts/', data);
+  const response = await axios.post<CartProps>(`${apiUrl}/api/v1/carts/`, data);
   return parseCart(response.data);
 };
 

@@ -24,7 +24,7 @@ const from = new Date(now.setHours(0, 0, 0, 0));
 const to = new Date(now.setHours(24, 0, 0, 0));
 
 const fetchPlaces = async () => {
-  await getPlaces(from, to);
+  await getPlaces(from);
 };
 
 onMounted(() => {

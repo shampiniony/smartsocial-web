@@ -2,7 +2,7 @@
   <div id="map" class="w-full h-full relative"></div>
   <Transition name="fade" mode='out-in'>
     <div id="popup" ref="popup" v-show="popupVisible">
-      <MapPopup v-if="places.selected != null" :place="places.all[places.selected]" />
+      <MapPopup v-if="places.selected != null" :place="places.all[0]" />
     </div>
   </Transition>
 </template>

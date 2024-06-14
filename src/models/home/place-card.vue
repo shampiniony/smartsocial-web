@@ -1,6 +1,6 @@
 <template>
   <div class='rounded-2xl border'>
-    <img class='w-full rounded-2xl h-60 object-cover' :src='place.images[0].src'>
+    <img class='w-full rounded-2xl h-60 object-cover' :src='place.images[0].image'>
     <div class='flex gap-3 p-5 flex-col'>
       <h1 class='text-xl'>{{ place.name }}</h1>
       <p class='text-muted-foreground text-lg'>{{ place.address }}</p>

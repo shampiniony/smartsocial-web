@@ -6,10 +6,11 @@ import PlaceInfo from '@/models/place/place-info.vue';
 import { IPlace } from '@/models/place/place.interface';
 
 const place = ref<IPlace | null>(null);
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const fetchData = async () => {
   try {
-    const placeResponse = await axios.get('http://192.168.1.99:8000/api/v1/places/1');
+    const placeResponse = await axios.get(`${apiUrl}/api/v1/places/`);
     place.value = placeResponse.data;
   } catch (error) {
     console.error('Ошибка при получении данных:', error);

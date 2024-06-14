@@ -21,6 +21,7 @@ const getPlaces = async (date: Date) => {
     }));
 
     places.all = placesData;
+    console.log(places.all)
   } catch (error) {
     console.error('Error fetching places:', error);
   }

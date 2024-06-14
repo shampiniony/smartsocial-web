@@ -21,13 +21,13 @@ export const places = reactive<Places>({
       },
       images: [
         {
-          src: 'https://optim.tildacdn.com/tild3732-3266-4565-b661-646437333266/-/format/webp/opi-pas-08.jpg',
+          image: 'https://optim.tildacdn.com/tild3732-3266-4565-b661-646437333266/-/format/webp/opi-pas-08.jpg',
         },
         {
-          src: 'https://static.tildacdn.com/tild6463-3737-4666-b138-623262346639/opi-a-04.jpg',
+          image: 'https://static.tildacdn.com/tild6463-3737-4666-b138-623262346639/opi-a-04.jpg',
         },
         {
-          src: 'https://static.tildacdn.com/tild6463-3737-4666-b138-623262346639/opi-a-03.jpg',
+          image: 'https://static.tildacdn.com/tild6463-3737-4666-b138-623262346639/opi-a-03.jpg',
         },
       ],
     },
@@ -43,13 +43,13 @@ export const places = reactive<Places>({
       },
       images: [
         {
-          src: 'https://optim.tildacdn.com/tild3831-6332-4362-a531-636438353861/-/cover/620x460/center/center/-/format/webp/opi-a-03.jpg',
+          image: 'https://optim.tildacdn.com/tild3831-6332-4362-a531-636438353861/-/cover/620x460/center/center/-/format/webp/opi-a-03.jpg',
         },
         {
-          src: 'https://optim.tildacdn.com/tild3035-3936-4330-a533-313536643638/-/format/webp/opi-pas-01.jpg',
+          image: 'https://optim.tildacdn.com/tild3035-3936-4330-a533-313536643638/-/format/webp/opi-pas-01.jpg',
         },
         {
-          src: 'https://static.tildacdn.com/tild3731-3831-4663-b138-386539383733/opi-a-01.jpg',
+          image: 'https://static.tildacdn.com/tild3731-3831-4663-b138-386539383733/opi-a-01.jpg',
         },
       ],
     },
@@ -65,13 +65,13 @@ export const places = reactive<Places>({
       },
       images: [
         {
-          src: 'https://optim.tildacdn.com/tild3264-3834-4635-a466-646134633665/-/cover/620x460/center/center/-/format/webp/kalach_03.jpg',
+          image: 'https://optim.tildacdn.com/tild3264-3834-4635-a466-646134633665/-/cover/620x460/center/center/-/format/webp/kalach_03.jpg',
         },
         {
-          src: 'https://optim.tildacdn.com/tild6131-3433-4235-a431-656130303630/-/cover/620x460/center/center/-/format/webp/kalach_04.jpg',
+          image: 'https://optim.tildacdn.com/tild6131-3433-4235-a431-656130303630/-/cover/620x460/center/center/-/format/webp/kalach_04.jpg',
         },
         {
-          src: 'https://optim.tildacdn.com/tild6133-3033-4337-b562-623263323461/-/cover/620x460/center/center/-/format/webp/kalach_05.jpg',
+          image: 'https://optim.tildacdn.com/tild6133-3033-4337-b562-623263323461/-/cover/620x460/center/center/-/format/webp/kalach_05.jpg',
         },
       ],
     },
@@ -87,13 +87,13 @@ export const places = reactive<Places>({
       },
       images: [
         {
-          src: 'https://optim.tildacdn.com/tild3336-3863-4661-a663-633466343435/-/cover/620x460/center/center/-/format/webp/opi-mnav-03.jpg',
+          image: 'https://optim.tildacdn.com/tild3336-3863-4661-a663-633466343435/-/cover/620x460/center/center/-/format/webp/opi-mnav-03.jpg',
         },
         {
-          src: 'https://optim.tildacdn.com/tild3564-3638-4539-a131-313130646631/-/cover/620x460/center/center/-/format/webp/opi-mnav-01.jpg',
+          image: 'https://optim.tildacdn.com/tild3564-3638-4539-a131-313130646631/-/cover/620x460/center/center/-/format/webp/opi-mnav-01.jpg',
         },
         {
-          src: 'https://optim.tildacdn.com/tild6238-6465-4835-b537-303964393538/-/cover/620x460/center/center/-/format/webp/opi-mnav-02.jpg',
+          image: 'https://optim.tildacdn.com/tild6238-6465-4835-b537-303964393538/-/cover/620x460/center/center/-/format/webp/opi-mnav-02.jpg',
         },
       ],
     },
@@ -109,13 +109,13 @@ export const places = reactive<Places>({
       },
       images: [
         {
-          src: 'https://optim.tildacdn.com/tild6237-3364-4930-b337-623863356263/-/cover/620x460/center/center/-/format/webp/opi-sf-01.jpg',
+          image: 'https://optim.tildacdn.com/tild6237-3364-4930-b337-623863356263/-/cover/620x460/center/center/-/format/webp/opi-sf-01.jpg',
         },
         {
-          src: 'https://optim.tildacdn.com/tild3061-6538-4363-b136-646131376361/-/cover/620x460/center/center/-/format/webp/opi-sf-02.jpg',
+          image: 'https://optim.tildacdn.com/tild3061-6538-4363-b136-646131376361/-/cover/620x460/center/center/-/format/webp/opi-sf-02.jpg',
         },
         {
-          src: 'https://optim.tildacdn.com/tild3739-3661-4564-b131-356130353961/-/cover/620x460/center/center/-/format/webp/opi-sf-03.jpg',
+          image: 'https://optim.tildacdn.com/tild3739-3661-4564-b131-356130353961/-/cover/620x460/center/center/-/format/webp/opi-sf-03.jpg',
         },
       ],
     },

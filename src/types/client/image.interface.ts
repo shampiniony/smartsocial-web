@@ -1,3 +1,3 @@
 export interface Image {
-  src: string;
+  image: string;
 }

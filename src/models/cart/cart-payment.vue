@@ -79,7 +79,7 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { cart } from '@/store/cart.store'
-import Button from '@/components/ui/button/Button.vue'
+import Button from '@/components/ui/button/CustomButton.vue'
 
 const total = computed(() => cart.items.reduce((total, place) => {
   return total + place.tickets.reduce((placeTotal, ticket) => {

@@ -32,7 +32,7 @@
 import { computed } from 'vue';
 
 import { cart } from '@/store/cart.store';
-import Button from '@/components/ui/button/Button.vue';
+import Button from '@/components/ui/button/CustomButton.vue';
 import Ticket from '@/components/ticket.vue';
 
 const total = computed(() => cart.items.reduce((total, place) => {

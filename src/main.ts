@@ -7,12 +7,16 @@ import './assets/index.css';
 import { createMemoryHistory, createRouter } from 'vue-router';
 
 import Home from '@/pages/home.page.vue';
+import Place from '@/pages/place.page.vue';
 
 const app = createApp(App);
 
 const router = createRouter({
   history: createMemoryHistory(),
-  routes: [{ path: '/', name: 'home', component: Home }],
+  routes: [
+    // { path: '/', name: 'home', component: Home },
+    { path: '/', name: 'place', component: Place },
+  ],
 });
 
 app.use(GesturePlugin);

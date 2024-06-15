@@ -5,16 +5,17 @@
 <script setup lang='ts'>
 import { onMounted, onBeforeUnmount, ref } from 'vue';
 
-const props = defineProps < {
+const props = defineProps<{
   confirmationToken: string;
   returnUrl: string;
-} > ();
+}>();
 
 // ct-2dff2ad1-000f-5000-9000-17a1f32c7d4d
 
 const paymentFormRef = ref(null);
 
 const initializeWidget = () => {
+  // @ts-ignore
   const checkout = new window.YooMoneyCheckoutWidget({
     confirmation_token: props.confirmationToken,
     return_url: props.returnUrl,
@@ -23,7 +24,7 @@ const initializeWidget = () => {
         control_primary: '#00BF96'
       }
     },
-    error_callback: function (error) {
+    error_callback: function (error: any) {
       console.error('YooMoney Widget Error:', error);
     }
   });
@@ -31,6 +32,7 @@ const initializeWidget = () => {
 };
 
 const loadYooMoneyWidget = () => {
+  // @ts-ignore
   if (window.YooMoneyCheckoutWidget) {
     initializeWidget();
   } else {

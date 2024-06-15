@@ -1,8 +1,10 @@
 <template>
   <div class="h-screen flex justify-center items-center px-3">
     <div class="flex flex-col items-center gap-y-4">
-      <h3 class="font-semibold text-xl text-center">Оплата прошла успешно!</h3>
-      <p class="text-lg text-center">Билеты отправлены на вашу электронную почту</p>
+      <div v-if='status && status.payment_status == "succeeded"'>
+        <h3 class="font-semibold text-xl text-center">Оплата прошла успешно!</h3>
+        <p class="text-lg text-center">Билеты отправлены на вашу электронную почту</p>
+      </div>
       <div class="p-2 md:py-6 md:px-8 border-2 w-[98%] rounded-3xl">
         <div class="flex gap-x-2 md:gap-x-6">
           <div class="flex flex-col gap-y-4">
@@ -31,7 +33,7 @@
 import Button from '@/components/ui/button/Button.vue';
 import Paragraph from '@/models/ticket/paragraph.vue';
 import Status from '@/models/ticket/status.vue';
-import { useRoute, useRouter } from 'vue-router';
+import { useRoute } from 'vue-router';
 import { ref, onMounted } from 'vue';
 
 import { getPaymentStatus } from '@/api/payment.api';

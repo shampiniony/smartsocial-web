@@ -96,13 +96,15 @@ const form = useForm({
   validationSchema: formSchema,
 })
 
-const onSubmit = form.handleSubmit((values) => {
+const onSubmit = form.handleSubmit(async (values) => {
   console.log('Form submitted!', values)
-  if (cart.id != null) createPayment(cart.id, {
-    email: values.email,
-    phone: values.phone,
-    first_name: values.firstName,
-    last_name: values.lastName
-  })
+  if (cart.id != null) {
+    const data = await createPayment(cart.id, {
+      email: values.email,
+      phone: values.phone,
+      first_name: values.firstName,
+      last_name: values.lastName
+    })  
+  }
 })
 </script>

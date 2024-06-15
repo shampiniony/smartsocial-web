@@ -5,6 +5,7 @@
     <SheetContent class="p-10 pt-5 flex flex-col justify-between">
       <CartContents v-if='cart.status == "contents"' />
       <CartPayment v-if='cart.status == "payment"' />
+      <CartWidget v-if='cart.status == "widget"' />
     </SheetContent>
   </Sheet>
 </template>
@@ -17,4 +18,5 @@ import {
 import { cart } from '@/store/cart.store';
 import CartContents from '@/models/cart/cart-contents.vue';
 import CartPayment from '@/models/cart/cart-payment.vue';
+import CartWidget from '@/models/cart/cart-widget.vue';
 </script>

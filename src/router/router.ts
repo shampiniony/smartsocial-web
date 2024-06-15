@@ -2,7 +2,6 @@ import BuyerPage from '@/pages/buyers.page.vue';
 import CalendarTempPage from '@/pages/temporary-calendar.page.vue';
 import HomePage from '@/pages/home.page.vue';
 import PlacePage from '@/pages/place.page.vue';
-import CalendarTempPage from '@/pages/temporary-calendar.page.vue';
 import PaymentPage from '@/pages/payment.page.vue';
 import NotFoundPage from '@/pages/not-found.page.vue';
 import AdminPage from '@/pages/admin.page.vue';

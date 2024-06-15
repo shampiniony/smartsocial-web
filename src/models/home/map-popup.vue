@@ -1,6 +1,6 @@
 <template>
 <div class="w-80 h-20 bg-white rounded-xl flex overflow-hidden">
-    <img class="object-cover w-32" :src="place.images[0].src" alt="">
+    <img class="object-cover w-32" :src="place.images[0].image" alt="">
     <div class="p-2 flex flex-col justify-around">
         <p class="text-sm">
         {{ place.name }}

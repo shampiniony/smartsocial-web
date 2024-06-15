@@ -15,3 +15,11 @@ import { getBookings } from '@/api/admin.api';
 const message = ref("Выгрузить данные в amo CRM")
 
 </script>
+  <div>Admin Page</div>
+</template>
+
+<script>
+export default {
+  name: 'AdminPage',
+};
+</script>

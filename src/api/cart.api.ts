@@ -9,6 +9,20 @@ interface ApiCart {
   tickets: CartTicket[];
 }
 
+interface ApiTicket {
+  ticket: number;
+  time: Date;
+  quantity: number;
+}
+
+async function fetchTicketDetails(ticketId: number): Promise<CartTicket> {
+  const response = await axios.get<CartTicket>(
+    `${apiUrl}/api/v1/tickets/${ticketId}/`
+  );
+  return response.data;
+}
+
+
 const parseCart = (cart: ApiCart): Partial<CartProps> => {
   return {
     id: cart.id,
@@ -26,7 +40,7 @@ export const createCart = async (
     tickets: cart.tickets,
   };
 
-  const response = await axios.post<ApiCart>(`${apiUrl}/api/v1/carts/`, data);
+  const response = await axios.post<CartProps>(`${apiUrl}/api/v1/carts/`, data);
   return parseCart(response.data);
 };
 

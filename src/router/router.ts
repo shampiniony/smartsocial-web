@@ -7,6 +7,9 @@ import adminPage from '@/pages/admin.page.vue';
 
 import { createRouter, createWebHistory } from 'vue-router';
 
+export const apiUrl = import.meta.env.VITE_API_URL;
+export const appUrl = import.meta.env.VITE_APP_URL;
+
 const routes = [
   {
     path: '/place/:id',

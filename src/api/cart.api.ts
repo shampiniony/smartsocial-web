@@ -2,7 +2,7 @@ import axios from 'axios';
 import { CartProps } from '@/store/cart.store';
 import { CartTicket } from '@/types/cart/cart-ticket.interface';
 
-const apiUrl = import.meta.env.VITE_API_URL;
+import { apiUrl } from '@/router/router';
 
 interface ApiCart {
   id?: number;

@@ -45,7 +45,7 @@ import { PaymentStatus, SucessfulPayment } from '@/types/client/payment-status.i
 const route = useRoute();
 const status = ref<PaymentStatus | null>(null);
 
-const appUrl = import.meta.env.VITE_APP_URL;
+import { appUrl } from '@/router/router';
 
 let pollInterval: NodeJS.Timeout | null = null;
 

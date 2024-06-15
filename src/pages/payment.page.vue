@@ -12,7 +12,7 @@
           </div>
 
           <div class="flex flex-col gap-y-4">
-            <Paragraph class="md:w-max">2dfd28ac-000f-5000-a000-1a776437c021</Paragraph>
+            <Paragraph class="md:w-max">{{ $route.params.id }}</Paragraph>
             <Status status="succeed"></Status>
             <Paragraph>1 500 ₽</Paragraph>
           </div>
@@ -28,6 +28,9 @@
 import Button from '@/components/ui/button/Button.vue';
 import Paragraph from '@/models/ticket/paragraph.vue';
 import Status from '@/models/ticket/status.vue';
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
 
 export default {
   components: {
@@ -37,5 +40,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

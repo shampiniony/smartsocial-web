@@ -9,3 +9,7 @@ export const createPayment = (cart_id: number, buyer: Buyer) => {
     buyer: buyer,
   });
 };
+
+const getPaymentStatus = (payment_id: string) => {
+  
+}

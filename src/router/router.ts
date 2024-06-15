@@ -1,6 +1,6 @@
 import homePage from '@/pages/home.page.vue';
 import placePage from '@/pages/place.page.vue';
-import ticketPage from '@/pages/ticket.page.vue';
+import paymentPage from '@/pages/payment.page.vue';
 
 import { createRouter, createWebHistory } from 'vue-router';
 
@@ -16,9 +16,9 @@ const routes = [
     component: homePage,
   },
   {
-    path: '/ticket',
-    name: 'Ticket',
-    component: ticketPage,
+    path: '/payment/:id',
+    name: 'Payment',
+    component: paymentPage,
   },
 ];
 

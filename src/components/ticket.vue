@@ -38,11 +38,10 @@ const increaseTicket = (ticket: CartTicket | TimedTicket) => {
     ticket.quantity++
   } else {
     let qtty = 0;
-
     let found = false;
 
     cart.tickets = cart.tickets.flatMap(x => {
-      if (x.ticket_id == ticket.ticket_id && x.time == ticket.time) {
+      if (x.ticket_id == ticket.ticket_id && x.time === ticket.time) {
         qtty = ++x.quantity;
         found = true;
       } else {
@@ -56,13 +55,8 @@ const increaseTicket = (ticket: CartTicket | TimedTicket) => {
     })
 
     if (!found) {
-      cart.tickets = [
-        ...cart.tickets,
-        {
-          ...ticket,
-          quantity: 1
-        }
-      ];
+      console.log("not found!", cart.tickets, ticket)
+      cart.tickets.push({ ...ticket, quantity: 1 });
     }
   }
 }
@@ -82,7 +76,7 @@ const removeTicket = (ticket: CartTicket | TimedTicket) => {
   if (isCartTicket(ticket)) {
     ticket.quantity = 0;
   } else {
-    let eh = cart.tickets.find(x => (x.ticket_id == ticket.ticket_id && x.time == ticket.time))?.quantity;
+    let eh = cart.tickets.find(x => x.ticket_id == ticket.ticket_id)?.quantity;
     if (eh)
       eh = 0;
   }

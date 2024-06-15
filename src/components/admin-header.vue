@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div class="z-50 left-0">
     <div :class="{ 'w-64 pl-[24px] pr-[24px]': isOpen, 'w-20 items-center': !isOpen }"
-      class="h-screen bg-secondary z-50 transition-all duration-200 ease-in-out flex flex-col relative">
+      class="min-h-screen h-full bg-secondary z-50 transition-all duration-200 ease-in-out flex flex-col relative">
       <div class="mt-2 space-y-8">
-        <div class="flex items-center space-x-2 h-14 mb-10">
+        <div class="p-2 flex items-center space-x-4 h-14 mb-10">
           <img class="w-8" :src="logoIcon"/>
           <div v-if="isOpen">
             <h3 class="font-semibold">kolomnago</h3>
@@ -11,12 +11,12 @@
           </div>
         </div>
 
-        <div class="flex space-x-2">
+        <div class="flex p-2 space-x-2">
           <img class="w-8" :src="searchIcon"/>
           <input v-if="isOpen" v-model="searchQuery" class="border-b-2 w-4/5 bg-secondary no-focus" type="text"/>
         </div>
-        <SidebarItem :imgSrc="calendarIcon" to="/admin/calendar" title="Календарь" :isOpen="isOpen" />
-        <SidebarItem :imgSrc="scheduleIcon" to="/admin/schedule" title="Расписание" :isOpen="isOpen" />
+        <SidebarItem :imgSrc="calendarIcon" to="/admin/calendar" title="Календарь" :isOpen="isOpen" :isActive="isActive('/admin/calendar')"/>
+        <SidebarItem :imgSrc="scheduleIcon" to="/admin/schedule" title="Расписание" :isOpen="isOpen"/>
         <SidebarItem :imgSrc="profileIcon" to="/admin/profile" title="Профиль" :isOpen="isOpen" />
         <SidebarItem :imgSrc="plusIcon" to="/admin/add-event" title="Добавить" :isOpen="isOpen" />
 
@@ -39,12 +39,18 @@ import plusIcon from '@/assets/icons/plus.icon.svg'
 import SidebarItem from './sidebar-item.vue'
 import searchIcon from '@/assets/icons/search.icon.svg'
 import logoIcon from '@/assets/logo.svg'
+import { useRoute } from 'vue-router'
 
 const isOpen = ref(false)
 const searchQuery = ref('')
+const route = useRoute()
 
 function toggleSidebar() {
   isOpen.value = !isOpen.value
+}
+
+function isActive(path) {
+  return route.path === path
 }
 
 </script>

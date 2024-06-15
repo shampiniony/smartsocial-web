@@ -1,9 +1,9 @@
 <template>
-  <RouterLink :to="to" class="flex items-center space-x-4">
+  <RouterLink :class="{ 'bg-white': isActive }" :to="to" class="p-2 rounded-full flex items-center space-x-4">
     <img class="w-8 h-8" :src="imgSrc" />
-    <transition name="fade">
+    <!-- <transition name="fade"> -->
       <span v-if="isOpen">{{ title }}</span>
-    </transition>
+    <!-- </transition> -->
   </RouterLink>
 </template>
 
@@ -14,7 +14,8 @@ const props = defineProps({
   imgSrc: String,
   title: String,
   to: String,
-  isOpen: Boolean
+  isOpen: Boolean,
+  isActive: Boolean
 })
 </script>
 

@@ -1,7 +1,9 @@
 <template>
-  <component :is="currentHeader" />
-  <Sheet/>
-  <router-view />
+  <div :class="{'admin-container': isAdminPath}">
+    <component :is="currentHeader" />
+    <router-view />
+  </div>
+  <Sheet v-if="!isAdminPath"/>
 </template>
 
 <script setup lang="ts">
@@ -13,7 +15,18 @@ import Sheet from '@/models/cart/cart-sheet.vue';
 
 const route = useRoute();
 
+const isAdminPath = computed(() => {
+  return route.path.startsWith('/admin');
+});
+
 const currentHeader = computed(() => {
-  return route.path.startsWith('/admin') ? AdminHeader : Header;
+  return isAdminPath.value ? AdminHeader : Header;
 });
 </script>
+
+<style scoped>
+.admin-container {
+  display: flex;
+  flex-direction: row;
+}
+</style>

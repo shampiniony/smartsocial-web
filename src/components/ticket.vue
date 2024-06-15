@@ -42,7 +42,7 @@ const increaseTicket = (ticket: CartTicket | TimedTicket) => {
     let found = false;
 
     cart.tickets = cart.tickets.flatMap(x => {
-      if (x.ticket_id == ticket.ticket_id) {
+      if (x.ticket_id == ticket.ticket_id && x.time == ticket.time) {
         qtty = ++x.quantity;
         found = true;
       } else {
@@ -73,7 +73,7 @@ const decreaseTicket = (ticket: CartTicket | TimedTicket) => {
   } else {
     cart.tickets = cart.tickets.flatMap(x => ({
       ...x,
-      quantity: x.ticket_id == ticket.ticket_id ? --x.quantity : x.quantity
+      quantity: (x.ticket_id == ticket.ticket_id && x.time == ticket.time) ? --x.quantity : x.quantity
     }))
   }
 }
@@ -82,7 +82,7 @@ const removeTicket = (ticket: CartTicket | TimedTicket) => {
   if (isCartTicket(ticket)) {
     ticket.quantity = 0;
   } else {
-    let eh = cart.tickets.find(x => x.ticket_id == ticket.ticket_id)?.quantity;
+    let eh = cart.tickets.find(x => (x.ticket_id == ticket.ticket_id && x.time == ticket.time))?.quantity;
     if (eh)
       eh = 0;
   }

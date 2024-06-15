@@ -37,21 +37,30 @@ watch(
     if (isUpdating) return;
     isUpdating = true;
 
-    newCart.tickets = cart.tickets.filter((ticket) => ticket.quantity > 0);
-    newCart = {
+    // Filter out tickets with quantity <= 0
+    const filteredTickets = newCart.tickets.filter(
+      (ticket) => ticket.quantity > 0
+    );
+
+    // Create a new cart object with filtered tickets and update it
+    const updatedCart = await updateCart({
       ...newCart,
-      ...(await updateCart(newCart)),
-    };
+      tickets: filteredTickets,
+    });
 
-    newCart.visible = cart.visible;
+    // Update reactive cart properties
+    Object.assign(cart, updatedCart);
 
-    localStorage.setItem('cart', JSON.stringify(newCart));
+    // Ensure the visibility state is preserved
+    cart.visible = newCart.visible;
+
+    // Save the updated cart to localStorage
+    localStorage.setItem('cart', JSON.stringify(cart));
 
     nextTick(() => {
       isUpdating = false;
     });
 
-    console.log(newCart);
     console.log(cart);
   },
   { deep: true }

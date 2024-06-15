@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 import { apiUrl } from '@/router/router';
 
@@ -31,4 +31,11 @@ export async function getEvents(): Promise<AdminEvent[]> {
     console.error('Error fetching events:', error);
     return [];
   }
+}
+
+export async function getEventById(id: number): Promise<AdminEvent> {
+  const response = await axios.get<AdminEvent>(
+    `${apiUrl}/api/v1/events/${id}/`
+  );
+  return response.data;
 }

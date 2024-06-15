@@ -1,10 +1,17 @@
-import { AdminEvent } from '@/api/event.api';
-import { Ticket } from './ticket.interface';
+import { TicketType } from './ticket.interface';
+
+interface BookingTicket {
+  ticket_id: number;
+  name: string;
+  type: TicketType;
+  price: number;
+  personas: number;
+}
 
 export interface Booking {
   id: number;
-  event: AdminEvent;
-  ticket: Ticket;
+  event: number;
+  ticket: BookingTicket;
   time: Date;
   visited: boolean;
 }

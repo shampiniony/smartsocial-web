@@ -30,7 +30,16 @@ import Paragraph from '@/models/ticket/paragraph.vue';
 import Status from '@/models/ticket/status.vue';
 import { useRoute } from 'vue-router';
 
+import { getPaymentStatus } from '@/api/payment.api';
+import { PaymentStatus, SucessfulPayment } from '@/types/client/payment-status.interface';
+
 const route = useRoute();
+
+onMounted(async () => {
+  const status = await getPaymentStatus(route.params.id);
+
+  console.log(status)
+})
 
 export default {
   components: {

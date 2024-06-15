@@ -33,5 +33,5 @@ const df = new DateFormatter('en-US', {
   dateStyle: 'long',
 })
 
-defineProps<{ penis: DateValue }>();
+defineProps<{ value: DateValue }>();
 </script>

@@ -8,12 +8,12 @@
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
 import PlaceInfo from '@/models/place/place-info.vue';
-import { IPlace } from '@/models/place/place.interface';
+import { Place } from '@/types/client/place.interface';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
 
-const place = ref<IPlace | null>(null);
+const place = ref<Place | null>(null);
 const apiUrl = import.meta.env.VITE_API_URL;
 
 const fetchData = async () => {

@@ -26,7 +26,7 @@
         <Button class="mt-8 bg-primary px-6 py-2 rounded-3xl text-white">Скачать билет</Button>
       </a>
     </div>
-    <PaymentWidget v-if='route.query.key != null' :confirmation-token='route.query.key'
+    <PaymentWidget v-if='route.query.key != null' :confirmation-token='route.query.key.toString()'
       :return-url='`${appUrl}${route.path}`' />
   </div>
 </template>

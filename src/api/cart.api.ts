@@ -39,7 +39,7 @@ export const createCart = async (
     tickets: cart.tickets,
   };
 
-  const response = await axios.post<CartProps>(`${apiUrl}/api/v1/carts/`, data);
+  const response = await axios.post<ApiCart>(`${apiUrl}/api/v1/carts/`, data);
   return parseCart(response.data);
 };
 

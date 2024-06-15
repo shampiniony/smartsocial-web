@@ -4,6 +4,7 @@ import calendarTempPage from '@/pages/temporary-calendar.page.vue';
 import paymentPage from '@/pages/payment.page.vue';
 import notFoundPage from '@/pages/not-found.page.vue';
 import adminPage from '@/pages/admin.page.vue';
+import buyerPage from '@/pages/buyers.page.vue';
 
 import { createRouter, createWebHistory } from 'vue-router';
 
@@ -12,11 +13,6 @@ const routes = [
     path: '/place/:id',
     name: 'Place',
     component: placePage,
-  },
-  {
-    path: '/admin/calendar',
-    name: 'Calendar',
-    component: calendarTempPage,
   },
   {
     path: '/',
@@ -38,6 +34,16 @@ const routes = [
     name: 'Admin',
     component: adminPage,
   },
+  {
+    path: '/admin/calendar',
+    name: 'Calendar',
+    component: calendarTempPage,
+  },
+  {
+    path: '/admin/buyers',
+    name: 'Buyers',
+    component: buyerPage
+  }
 ];
 
 export const router = createRouter({

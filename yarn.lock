@@ -612,7 +612,7 @@
   version "1.43.3"
   resolved "https://registry.yarnpkg.com/@schedule-x/vue/-/vue-1.43.3.tgz#2196d2e054823cae02816225d5ba52cd5d571a4e"
   integrity sha512-06aCxgBjFg2HD8f10ayR5H0fzPnOE1q/T0WhTkwATk5HlELKOgkYSHE+jq+Ez+p1iYUCFHGn4kcKCmc4NEaY4Q==
-
+  
 "@sindresorhus/merge-streams@^2.1.0":
   version "2.3.0"
   resolved "https://registry.npmjs.org/@sindresorhus/merge-streams/-/merge-streams-2.3.0.tgz"

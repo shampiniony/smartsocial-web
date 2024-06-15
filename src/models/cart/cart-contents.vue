@@ -9,10 +9,10 @@
     </div>
   </div>
   <div class='flex h-full gap-5 flex-col pt-10'>
-    <div v-for='section in groupTicketsByEvent(cart.tickets)'>
-      <p class='pb-2'>{{ section.name }}</p>
+    <div v-for='section in groupTicketsByEventAndTime(cart.tickets)'>
+      <p class='pb-2'>{{ section.event_name }} {{ section.time.toISOString() }}</p>
       <TransitionGroup class='flex gap-2 flex-col' name='fade' tag='div'>
-        <Ticket v-for='(ticket, index) in section.events' :key='index' :ticket='ticket' variant='full' />
+        <Ticket v-for='(ticket, index) in section.tickets' :key='index' :ticket='ticket' variant='full' />
       </TransitionGroup>
     </div>
   </div>
@@ -36,26 +36,28 @@ import Button from '@/components/ui/button/CustomButton.vue';
 import Ticket from '@/components/ticket.vue';
 import { CartTicket } from '@/types/cart/cart-ticket.interface';
 
-function groupTicketsByEvent(tickets: CartTicket[]): { name: string; id: number; events: CartTicket[] }[] {
-  const sections: { name: string; id: number; events: CartTicket[] }[] = [];
+function groupTicketsByEventAndTime(tickets: CartTicket[]): { event_name: string; event_id: number; time: Date; tickets: CartTicket[] }[] {
+  const sections: { event_name: string; event_id: number; time: Date; tickets: CartTicket[] }[] = [];
 
   tickets.forEach(ticket => {
-    let section = sections.find(section => section.id === ticket.ticket_id && section.name === ticket.name);
+    let section = sections.find(section => section.event_id === ticket.event_id && section.event_name === ticket.event_name && section.time.getTime() === ticket.time.getTime());
 
     if (!section) {
       section = {
-        name: ticket.name,
-        id: ticket.ticket_id,
-        events: []
+        event_name: ticket.event_name,
+        event_id: ticket.event_id,
+        time: ticket.time,
+        tickets: []
       };
       sections.push(section);
     }
 
-    section.events.push(ticket);
+    section.tickets.push(ticket);
   });
 
   return sections;
 }
+
 const total = computed(() => cart.tickets.reduce((total, ticket) => {
   return total + (ticket.quantity * ticket.price);
 }, 0))

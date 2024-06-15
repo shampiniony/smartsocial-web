@@ -2,7 +2,6 @@ import axios from 'axios';
 import { Place } from '@/types/client/place.interface';
 import { places } from '@/store/places.store';
 import { Event as IEvent } from '@/types/client/event.interface';
-import { formatDateToISO, pad } from '@/utils';
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -25,9 +24,7 @@ export const getEvents = async (id: number, date: Date) => {
     const endDate = new Date(date.setHours(23, 59, 59, 999));
 
     const response = await axios.get<IEvent[]>(
-      `${apiUrl}/api/v1/places/${id}/events/available/?start_datetime=${formatDateToISO(
-        startDate
-      )}&end_datetime=${formatDateToISO(endDate)}`
+      `${apiUrl}/api/v1/places/${id}/events/available/?start_datetime=${startDate.toISOString()}&end_datetime=${endDate.toISOString()}`
     );
 
     const timeResponse = response.data.map((data) => ({

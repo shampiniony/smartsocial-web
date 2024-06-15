@@ -1,5 +1,5 @@
 <template>
-  <div @click='router.push(`/place/${place.id}`)' class='rounded-2xl border'>
+  <div @click='router.push(`/place/${place.id}`)' class='rounded-2xl border cursor-pointer'>
     <img class='w-full rounded-2xl h-60 object-cover' :src='place.images[0].src'>
     <div class='flex gap-3 p-5 flex-col'>
       <h1 class='text-xl'>{{ place.name }}</h1>

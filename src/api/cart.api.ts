@@ -5,25 +5,29 @@ import { CartTicket } from '@/types/cart/cart-ticket.interface';
 const apiUrl = import.meta.env.VITE_API_URL;
 
 interface ApiCart {
-  id: number | null;
+  id?: number;
   tickets: CartTicket[];
 }
 
 const parseCart = (cart: ApiCart): Partial<CartProps> => {
   return {
     id: cart.id,
-    tickets: cart.tickets,
+    tickets: cart.tickets.flatMap((x) => ({
+      ...x,
+      time: new Date(x.time),
+    })),
   };
 };
 
-export const createCart = async (cart: CartProps): Promise<CartProps> => {
+export const createCart = async (
+  cart: CartProps
+): Promise<Partial<CartProps>> => {
   const data: ApiCart = {
-    id: cart.id,
     tickets: cart.tickets,
   };
 
-  const response = await axios.post<CartProps>(apiUrl + '/api/v1/carts/', data);
-  return response.data;
+  const response = await axios.post<ApiCart>(`${apiUrl}/api/v1/carts/`, data);
+  return parseCart(response.data);
 };
 
 export const updateCart = async (

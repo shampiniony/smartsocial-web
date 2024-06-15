@@ -50,6 +50,9 @@ watch(
     nextTick(() => {
       isUpdating = false;
     });
+
+    console.log(newCart);
+    console.log(cart);
   },
   { deep: true }
 );

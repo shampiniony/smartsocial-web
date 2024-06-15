@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white pt-5 flex flex-col">
+  <div class="bg-white pt-5 flex flex-col gap-5">
     <div v-for='(section, index) in groupEventsBySection(events)' :key='index'
       class="flex flex-col w-4/5 max-w-[1400px] mx-auto gap-4">
       <div>{{ section.name }}</div>

@@ -1,5 +1,4 @@
-import { Ticket } from '@/types/client/ticket.interface';
-import { formatDateToISO } from '@/utils';
+import { Ticket, TimedTicket } from '@/types/client/ticket.interface';
 import axios from 'axios';
 
 const apiUrl = import.meta.env.VITE_API_URL;
@@ -18,14 +17,17 @@ export const getTicketsV2 = async (
   event_id: number,
   from: Date,
   to: Date
-): Promise<Ticket[]> => {
-  const result = await axios.get<Ticket[]>(
-    `${apiUrl}/api/v1/events/${event_id}/tickets/available/?start_datetime=${formatDateToISO(
-      from
-    )}&end_datetime=${formatDateToISO(to)}`
+): Promise<TimedTicket[]> => {
+  const result = await axios.get<TimedTicket[]>(
+    `${apiUrl}/api/v1/events/${event_id}/tickets/available/?start_datetime=${from.toISOString()}&end_datetime=${to.toISOString()}`
   );
 
   console.log(result.data);
 
-  return result.data;
+  const data: TimedTicket[] = result.data.flatMap((x) => ({
+    ...x,
+    time: new Date(x.time),
+  }));
+
+  return data;
 };

@@ -1,7 +1,7 @@
 <template>
   <div class='h-26 w-full border rounded-3xl flex p-5 px-8 gap-2 justify-between'>
     <div class='flex flex-col justify-between'>
-      <p>Взрослый билет</p>
+      <p>{{ ticket.name }}</p>
       <p class='text-2xl'>{{ ticket.price.toString().replace(/\.00$/, '').replace(/\B(?=(\d{3})+(?!\d))/g, " ") }} ₽</p>
     </div>
     <div class='flex flex-col justify-center'>
@@ -23,17 +23,17 @@
 
 <script setup lang='ts'>
 import { CartTicket } from '@/types/cart/cart-ticket.interface';
-import { Ticket } from '@/types/client/ticket.interface';
+import { TimedTicket } from '@/types/client/ticket.interface';
 import { cart } from '@/store/cart.store';
 
 type TicketVariant = 'full' | 'short'
 
 interface TicketProps {
-  ticket: CartTicket | Ticket;
+  ticket: CartTicket | TimedTicket;
   variant?: TicketVariant;
 }
 
-const increaseTicket = (ticket: CartTicket | Ticket) => {
+const increaseTicket = (ticket: CartTicket | TimedTicket) => {
   if (isCartTicket(ticket)) {
     ticket.quantity++
   } else {
@@ -67,7 +67,7 @@ const increaseTicket = (ticket: CartTicket | Ticket) => {
   }
 }
 
-const decreaseTicket = (ticket: CartTicket | Ticket) => {
+const decreaseTicket = (ticket: CartTicket | TimedTicket) => {
   if (isCartTicket(ticket)) {
     ticket.quantity--
   } else {
@@ -78,7 +78,7 @@ const decreaseTicket = (ticket: CartTicket | Ticket) => {
   }
 }
 
-const removeTicket = (ticket: CartTicket | Ticket) => {
+const removeTicket = (ticket: CartTicket | TimedTicket) => {
   if (isCartTicket(ticket)) {
     ticket.quantity = 0;
   } else {
@@ -88,15 +88,15 @@ const removeTicket = (ticket: CartTicket | Ticket) => {
   }
 }
 
-const getCount = (ticket: CartTicket | Ticket): number => {
+const getCount = (ticket: CartTicket | TimedTicket): number => {
   if (isCartTicket(ticket)) {
     return ticket.quantity;
   } else {
-    return cart.tickets.find(x => x.ticket_id == ticket.ticket_id)?.quantity ?? 0;
+    return cart.tickets.find(x => x.ticket_id == ticket.ticket_id && x.time == ticket.time)?.quantity ?? 0;
   }
 }
 
-function isCartTicket(ticket: CartTicket | Ticket): ticket is CartTicket {
+function isCartTicket(ticket: CartTicket | TimedTicket): ticket is CartTicket {
   return (ticket as CartTicket).quantity !== undefined;
 }
 

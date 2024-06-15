@@ -33,12 +33,12 @@ import CustomButton from '@/components/ui/button/CustomButton.vue';
 import { modal } from '@/store/modal.store'
 import { cart } from '@/store/cart.store'
 import { ref, watch } from 'vue';
-import { Ticket as ITicket } from '@/types/client/ticket.interface';
+import { TimedTicket } from '@/types/client/ticket.interface';
 import { getTicketsV2 } from '@/api/tickets.api';
 
 import Ticket from '@/components/ticket.vue';
 
-const tickets = ref<ITicket[]>([]);
+const tickets = ref<TimedTicket[]>([]);
 
 watch(modal, async () => {
   if (modal.selected) {

@@ -9,3 +9,7 @@ export interface Ticket {
   event_id: number;
   event_name: string;
 }
+
+export interface TimedTicket extends Ticket {
+  time: Date;
+}

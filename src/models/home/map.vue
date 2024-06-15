@@ -2,7 +2,7 @@
   <div id="map" class="w-full h-full relative"></div>
   <Transition name="fade" mode='out-in'>
     <div id="popup" ref="popup" v-show="popupVisible">
-      <MapPopup v-if="places.selected != null" :place="places.all[places.selected]" />
+      <MapPopup v-if="places.selected != null" :place="places.all.find(x => x.id == places.selected)" />
     </div>
   </Transition>
 </template>
@@ -33,7 +33,7 @@ const addMarkers = (markers) => {
   markers.forEach(marker => {
     const iconFeature = new Feature({
       geometry: new Point(fromLonLat([marker.lon, marker.lat])),
-      name: marker.popup.id,
+      name: marker.id,
     });
 
     iconFeature.setStyle(new Style({
@@ -82,6 +82,8 @@ onMounted(async () => {
       return feature;
     });
 
+    console.log(places.selected)
+
     if (feature) {
       // @ts-ignore
       const coordinates = feature.getGeometry().getCoordinates() ?? [0, 0];
@@ -97,7 +99,7 @@ onMounted(async () => {
   addMarkers(places.all.map(x => ({
     lon: x.location.lon,
     lat: x.location.lat,
-    popup: x
+    id: x.id
   })));
 
   // Watch for changes in places store
@@ -105,7 +107,7 @@ onMounted(async () => {
     addMarkers(newPlaces.map(x => ({
       lon: x.location.lon,
       lat: x.location.lat,
-      popup: x
+      id: x.id
     })));
   }, { deep: true });
 });

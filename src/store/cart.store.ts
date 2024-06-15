@@ -9,7 +9,7 @@ export interface CartProps {
   id: number | null;
   visible: boolean;
   status: CartStatus;
-  items: CartTicket[];
+  tickets: CartTicket[];
 }
 
 const loadCartFromLocalStorage = (): CartProps => {
@@ -25,7 +25,7 @@ const loadCartFromLocalStorage = (): CartProps => {
     id: null,
     visible: false,
     status: 'contents',
-    items: [],
+    tickets: [],
   };
 };
 
@@ -37,7 +37,7 @@ watch(
     if (isUpdating) return;
     isUpdating = true;
 
-    newCart.items = cart.items.filter((item) => item.quantity > 0);
+    newCart.tickets = cart.tickets.filter((ticket) => ticket.quantity > 0);
     newCart = {
       ...newCart,
       ...(await updateCart(newCart)),

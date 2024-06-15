@@ -12,7 +12,7 @@
     <!-- <div v-for='section in cart.items'> -->
     <!-- <p class='pb-2'>{{ section.name }}</p> -->
     <TransitionGroup class='flex gap-2 flex-col' name='fade' tag='div'>
-      <Ticket v-for='(ticket, index) in cart.items' :key='index' :ticket='ticket' variant='full' />
+      <Ticket v-for='(ticket, index) in cart.tickets' :key='index' :ticket='ticket' variant='full' />
     </TransitionGroup>
     <!-- </div> -->
   </div>
@@ -35,7 +35,7 @@ import { cart } from '@/store/cart.store';
 import Button from '@/components/ui/button/CustomButton.vue';
 import Ticket from '@/components/ticket.vue';
 
-const total = computed(() => cart.items.reduce((total, ticket) => {
+const total = computed(() => cart.tickets.reduce((total, ticket) => {
   return total + (ticket.quantity * ticket.price);
 }, 0))
 </script>

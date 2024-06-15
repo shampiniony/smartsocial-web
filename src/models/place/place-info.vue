@@ -30,44 +30,32 @@
 					!date && 'text-muted-foreground',
 				)">
 					<CalendarIcon class="mr-2 h-4 w-4" />
-					{{ date ? df.format(date.toDate(getLocalTimeZone())) : "Pick a date" }}
+					{{ date ? df.format(date.toDate(getLocalTimeZone())) : "Выбрать дату" }}
 				</Button>
 			</PopoverTrigger>
 			<PopoverContent class="w-auto p-0">
 				<Calendar v-model="date" initial-focus />
 			</PopoverContent>
 		</Popover>
-
-		<Dialog :open='false'>
-			<DialogContent>
-				<DialogHeader>
-					<DialogTitle>{{ props.place.name }}</DialogTitle>
-					<DialogDescription>
-						{{ "something" }}
-					</DialogDescription>
-				</DialogHeader>
-				<DialogFooter>
-					<CustomButton text='перейти в корзину' />
-				</DialogFooter>
-			</DialogContent>
-		</Dialog>
 	</div>
 
 	<TimeLine :events='events' />
+
+	<TicketModal />
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, watch } from 'vue'
+import { ref, watch } from 'vue'
 import placeImage from '@/assets/place.jpg'
 import arrowUp from '@/assets/icons/arrow-up.svg'
-import { defineProps } from 'vue';
-import TimeLine from '@/models/place/time-line.vue';
 import { getEvents } from '@/api/places.api';
 import { Calendar as CalendarIcon } from 'lucide-vue-next'
 import { Calendar } from '@/components/ui/calendar'
 import { Button } from '@/components/ui/button'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { cn } from '@/utils'
+
+import TicketModal from '@/models/place/ticket-modal.vue';
 
 import {
 	CalendarDate,
@@ -76,17 +64,9 @@ import {
 	getLocalTimeZone,
 } from '@internationalized/date'
 
-import {
-	Dialog,
-	DialogContent,
-	DialogDescription,
-	DialogFooter,
-	DialogHeader,
-	DialogTitle,
-} from '@/components/ui/dialog'
-import CustomButton from '@/components/ui/button/CustomButton.vue';
 import { IPlace } from './place.interface';
 import { Event as IEvent } from '@/types/client/event.interface'
+import TimeLine from './time-line.vue';
 
 const isTextVisible = ref(false)
 const props = defineProps<{ place: IPlace }>();
@@ -103,14 +83,8 @@ const toggleText = () => {
 	isTextVisible.value = !isTextVisible.value
 }
 
-// onMounted(async () => {
-// 	events.value = await getEvents(props.place.id, date.value.toDate("Etc/GMT+3")) ?? [];
-// 	console.log(events.value)
-// })
-
 watch(date, async () => {
 	events.value = await getEvents(props.place.id, date.value.toDate("Etc/GMT+3")) ?? [];
-	console.log(events.value)
 }, {
 	immediate: true
 });

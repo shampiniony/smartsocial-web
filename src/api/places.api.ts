@@ -2,6 +2,7 @@ import axios from 'axios';
 import { Place } from '@/types/client/place.interface';
 import { places } from '@/store/places.store';
 import { Event as IEvent } from '@/types/client/event.interface';
+import { formatDateToISO, pad } from '@/utils';
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -30,19 +31,6 @@ const getPlaces = async (date: Date) => {
   }
 };
 
-const formatDateToISO = (date: Date) => {
-  const pad = (num: number) => String(num).padStart(2, '0');
-
-  const year = date.getFullYear();
-  const month = pad(date.getMonth() + 1); // getMonth() returns 0-based month
-  const day = pad(date.getDate());
-  const hours = pad(date.getHours());
-  const minutes = pad(date.getMinutes());
-  const seconds = pad(date.getSeconds());
-
-  return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
-};
-
 export const getEvents = async (id: number, date: Date) => {
   try {
     const startDate = new Date(date.setHours(0, 0, 0, 0));
@@ -54,13 +42,11 @@ export const getEvents = async (id: number, date: Date) => {
       )}&end_datetime=${formatDateToISO(endDate)}`
     );
 
-    const timeResponse = response.data.map((data) => (
-      {
-        ...data,
-        start_datetime: new Date(data.start_datetime),
-        end_datetime: new Date(data.end_datetime)
-      }
-    ))
+    const timeResponse = response.data.map((data) => ({
+      ...data,
+      start_datetime: new Date(data.start_datetime),
+      end_datetime: new Date(data.end_datetime),
+    }));
 
     return timeResponse;
   } catch (error) {

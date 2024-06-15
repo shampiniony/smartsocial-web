@@ -30,7 +30,7 @@ interface ApiTicketResponse {
 const parseCart = (cart: ApiCartResponse): Partial<CartProps> => {
   return {
     id: cart.id,
-    items: cart.tickets.flatMap((ticket) => {
+    tickets: cart.tickets.flatMap((ticket) => {
       return {
         quantity: ticket.quantity,
         time: ticket.time,
@@ -42,7 +42,7 @@ const parseCart = (cart: ApiCartResponse): Partial<CartProps> => {
 
 export const createCart = async (cart: CartProps): Promise<CartProps> => {
   const data: ApiCart = {
-    tickets: cart.items.flatMap((item) => ({
+    tickets: cart.tickets.flatMap((item) => ({
       ticket: item.id,
       time: item.time,
       quantity: item.quantity,
@@ -56,15 +56,16 @@ export const createCart = async (cart: CartProps): Promise<CartProps> => {
 export const updateCart = async (
   cart: CartProps
 ): Promise<Partial<CartProps>> => {
+  console.log(cart);
   if (cart.id == null) {
     return createCart(cart);
   } else {
     const data: ApiCart = {
       id: cart.id,
-      tickets: cart.items.flatMap((item) => ({
-        ticket: item.id,
-        time: item.time,
-        quantity: item.quantity,
+      tickets: cart.tickets.flatMap((ticket) => ({
+        ticket: ticket.id,
+        time: ticket.time,
+        quantity: ticket.quantity,
       })),
     };
 

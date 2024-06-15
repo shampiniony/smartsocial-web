@@ -487,6 +487,18 @@
   resolved "https://registry.npmjs.org/@pkgjs/parseargs/-/parseargs-0.11.0.tgz"
   integrity sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==
 
+"@preact/signals-core@^1.6.0":
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/@preact/signals-core/-/signals-core-1.6.1.tgz#d9ce4e6806be22325e569dd9fee06b6b41eb3bee"
+  integrity sha512-KXEEmJoKDlo0Igju/cj9YvKIgyaWFDgnprShQjzimUd5VynAAdTWMshawEOjUVeKbsI0aR58V6WOQp+DNcKApw==
+
+"@preact/signals@^1.2.3":
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/@preact/signals/-/signals-1.2.3.tgz#df186e6a9b786b7d1bf8405fdcc926393b5ff98f"
+  integrity sha512-M2DXse3Wi8HwjI1d2vQWOLJ3lHogvqTsJYvl4ofXRXgMFQzJ7kmlZvlt5i8x5S5VwgZu0ghru4HkLqOoFfU2JQ==
+  dependencies:
+    "@preact/signals-core" "^1.6.0"
+
 "@rollup/pluginutils@^5.1.0":
   version "5.1.0"
   resolved "https://registry.npmjs.org/@rollup/pluginutils/-/pluginutils-5.1.0.tgz"
@@ -576,6 +588,31 @@
   resolved "https://registry.yarnpkg.com/@rollup/rollup-win32-x64-msvc/-/rollup-win32-x64-msvc-4.18.0.tgz#5d694d345ce36b6ecf657349e03eb87297e68da4"
   integrity sha512-UOo5FdvOL0+eIVTgS4tIdbW+TtnBLWg1YBCcU2KWM7nuNwRz9bksDX1bekJJCpu25N1DVWaCwnT39dVQxzqS8g==
 
+"@schedule-x/calendar@^1.46.1":
+  version "1.46.1"
+  resolved "https://registry.yarnpkg.com/@schedule-x/calendar/-/calendar-1.46.1.tgz#93c66c0b975b90ff04b7d448c21a163814a4b500"
+  integrity sha512-nnIu6swOz22oaomibkt5W7HtmTrU2DxZdGQiLYiKm2LQT7de7e74aNEXOTAfBK/sRsJxIAcjU7aSCrutp5jzWA==
+
+"@schedule-x/drag-and-drop@^1.46.1":
+  version "1.46.1"
+  resolved "https://registry.yarnpkg.com/@schedule-x/drag-and-drop/-/drag-and-drop-1.46.1.tgz#9be3363af6ff495e7b644e0c4ed736ca9971aa3a"
+  integrity sha512-jq1GFCmkxqfSy6rxZoJOOlJnGqGei5b7zIPqccMK48lu8Zax+pqIFKbbvg3yM9TWr2RGW9hzB18GDaZ6XmPr/w==
+
+"@schedule-x/event-recurrence@^1.46.1":
+  version "1.46.1"
+  resolved "https://registry.yarnpkg.com/@schedule-x/event-recurrence/-/event-recurrence-1.46.1.tgz#cb418e3776cead881a600039aa13d45f46ee47a1"
+  integrity sha512-p+YKlq1NM2+0IvQFLixpMfgXYWzJrd3cCh/CEcM+c0RnA3cClXQGbuzeSRS0LAa3D2/9JjorbTHMfhvCSB7E7w==
+
+"@schedule-x/theme-default@^1.46.1":
+  version "1.46.1"
+  resolved "https://registry.yarnpkg.com/@schedule-x/theme-default/-/theme-default-1.46.1.tgz#b7b0e98ce153e7b3b8f15c2e9fbdad9112f57236"
+  integrity sha512-Rxdcy4wcekrgbasNrndiu9SMaR4MZilchWkNuyEjBcx+RZYcgFAr0pf1ez6RLaRUxIWj+wlOPO45X5koHCvUkQ==
+
+"@schedule-x/vue@^1.43.3":
+  version "1.43.3"
+  resolved "https://registry.yarnpkg.com/@schedule-x/vue/-/vue-1.43.3.tgz#2196d2e054823cae02816225d5ba52cd5d571a4e"
+  integrity sha512-06aCxgBjFg2HD8f10ayR5H0fzPnOE1q/T0WhTkwATk5HlELKOgkYSHE+jq+Ez+p1iYUCFHGn4kcKCmc4NEaY4Q==
+  
 "@sindresorhus/merge-streams@^2.1.0":
   version "2.3.0"
   resolved "https://registry.npmjs.org/@sindresorhus/merge-streams/-/merge-streams-2.3.0.tgz"
@@ -2129,6 +2166,15 @@ available-typed-arrays@^1.0.7:
   dependencies:
     possible-typed-array-names "^1.0.0"
 
+axios@1.6.7:
+  version "1.6.7"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-1.6.7.tgz#7b48c2e27c96f9c68a2f8f31e2ab19f59b06b0a7"
+  integrity sha512-/hDJGff6/c7u0hDkvkGxR/oy6CbCs8ziCsC7SqmhjfozqiJGc8Z11wrv9z9lYfY4K8l+H9TpjcMDX0xOZmx+RA==
+  dependencies:
+    follow-redirects "^1.15.4"
+    form-data "^4.0.0"
+    proxy-from-env "^1.1.0"
+
 axios@^1.7.2:
   version "1.7.2"
   resolved "https://registry.npmjs.org/axios/-/axios-1.7.2.tgz"
@@ -2771,7 +2817,7 @@ fill-range@^7.1.1:
   dependencies:
     to-regex-range "^5.0.1"
 
-follow-redirects@^1.15.6:
+follow-redirects@^1.15.4, follow-redirects@^1.15.6:
   version "1.15.6"
   resolved "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.6.tgz"
   integrity sha512-wWN62YITEaOpSK584EZXJafH1AGpO8RVgElfkuXbTOrPX4fIfOyEpW/CsiNd8JdYrAoOvafRTOEnvsO++qCqFA==
@@ -3436,6 +3482,18 @@ mlly@^1.4.2, mlly@^1.6.1, mlly@^1.7.0, mlly@^1.7.1:
     pkg-types "^1.1.1"
     ufo "^1.5.3"
 
+moment-timezone@^0.5.44:
+  version "0.5.45"
+  resolved "https://registry.yarnpkg.com/moment-timezone/-/moment-timezone-0.5.45.tgz#cb685acd56bac10e69d93c536366eb65aa6bcf5c"
+  integrity sha512-HIWmqA86KcmCAhnMAN0wuDOARV/525R2+lOLotuGFzn4HO+FH+/645z2wx0Dt3iDv6/p61SIvKnDstISainhLQ==
+  dependencies:
+    moment "^2.29.4"
+
+moment@^2.29.4:
+  version "2.30.1"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.30.1.tgz#f8c91c07b7a786e30c59926df530b4eac96974ae"
+  integrity sha512-uEmtNhbDOrWPFS+hdjFCBfy9f2YoyzRpwcl+DqpC6taX21FzsTLQVbMV/W7PzNSX6x/bhC1zA3c2UQ5NzH6how==
+
 mri@^1.2.0:
   version "1.2.0"
   resolved "https://registry.npmjs.org/mri/-/mri-1.2.0.tgz"
@@ -3474,6 +3532,16 @@ node-fetch-native@^1.6.3:
   version "1.6.4"
   resolved "https://registry.npmjs.org/node-fetch-native/-/node-fetch-native-1.6.4.tgz"
   integrity sha512-IhOigYzAKHd244OC0JIMIUrjzctirCmPkaIfhDeGcEETWof5zKYUW7e7MYvChGWh/4CJeXEgsRyGzuF334rOOQ==
+
+node-ical@^0.18.0:
+  version "0.18.0"
+  resolved "https://registry.yarnpkg.com/node-ical/-/node-ical-0.18.0.tgz#919ab65f43cdfebb4ac9a1c2acca2b5e62cc003f"
+  integrity sha512-FrOUPztjw9OUgSB9o/ffhl86BiVClQTut97C2NqCwKIgOAcKPEw5UQMuSuNJO/Y4hqTyJdKZh2TCqNHQnE9YFg==
+  dependencies:
+    axios "1.6.7"
+    moment-timezone "^0.5.44"
+    rrule "2.8.1"
+    uuid "^9.0.0"
 
 node-releases@^2.0.14:
   version "2.0.14"
@@ -3741,6 +3809,11 @@ postcss@^8.4.23, postcss@^8.4.38:
     picocolors "^1.0.0"
     source-map-js "^1.2.0"
 
+preact@^10.22.0:
+  version "10.22.0"
+  resolved "https://registry.yarnpkg.com/preact/-/preact-10.22.0.tgz#a50f38006ae438d255e2631cbdaf7488e6dd4e16"
+  integrity sha512-RRurnSjJPj4rp5K6XoP45Ui33ncb7e4H7WiOHVpjbkvqvA3U+N8Z6Qbo0AE6leGYBV66n8EhEaFixvIu3SkxFw==
+
 proj4@^2.3.14:
   version "2.11.0"
   resolved "https://registry.npmjs.org/proj4/-/proj4-2.11.0.tgz"
@@ -3917,6 +3990,13 @@ rollup@^4.13.0:
     "@rollup/rollup-win32-x64-msvc" "4.18.0"
     fsevents "~2.3.2"
 
+rrule@2.8.1:
+  version "2.8.1"
+  resolved "https://registry.yarnpkg.com/rrule/-/rrule-2.8.1.tgz#e8341a9ce3e68ce5b8da4d502e893cd9f286805e"
+  integrity sha512-hM3dHSBMeaJ0Ktp7W38BJZ7O1zOgaFEsn41PDk+yHoEtfLV+PoJt9E9xAlZiWgf/iqEqionN0ebHFZIDAp+iGw==
+  dependencies:
+    tslib "^2.4.0"
+
 run-parallel@^1.1.9:
   version "1.2.0"
   resolved "https://registry.npmjs.org/run-parallel/-/run-parallel-1.2.0.tgz"
@@ -4047,16 +4127,8 @@ stop-iteration-iterator@^1.0.0:
   dependencies:
     internal-slot "^1.0.4"
 
-"string-width-cjs@npm:string-width@^4.2.0":
-  version "4.2.3"
-  resolved "https://registry.npmjs.org/string-width/-/string-width-4.2.3.tgz"
-  integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==
-  dependencies:
-    emoji-regex "^8.0.0"
-    is-fullwidth-code-point "^3.0.0"
-    strip-ansi "^6.0.1"
-
-string-width@^4.1.0:
+"string-width-cjs@npm:string-width@^4.2.0", string-width@^4.1.0:
+  name string-width-cjs
   version "4.2.3"
   resolved "https://registry.npmjs.org/string-width/-/string-width-4.2.3.tgz"
   integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==
@@ -4102,14 +4174,8 @@ string.prototype.trimstart@^1.0.8:
     define-properties "^1.2.1"
     es-object-atoms "^1.0.0"
 
-"strip-ansi-cjs@npm:strip-ansi@^6.0.1":
-  version "6.0.1"
-  resolved "https://registry.npmjs.org/strip-ansi/-/strip-ansi-6.0.1.tgz"
-  integrity sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==
-  dependencies:
-    ansi-regex "^5.0.1"
-
-strip-ansi@^6.0.0, strip-ansi@^6.0.1:
+"strip-ansi-cjs@npm:strip-ansi@^6.0.1", strip-ansi@^6.0.0, strip-ansi@^6.0.1:
+  name strip-ansi-cjs
   version "6.0.1"
   resolved "https://registry.npmjs.org/strip-ansi/-/strip-ansi-6.0.1.tgz"
   integrity sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==
@@ -4464,6 +4530,11 @@ util-deprecate@^1.0.2:
   version "1.0.2"
   resolved "https://registry.npmjs.org/util-deprecate/-/util-deprecate-1.0.2.tgz"
   integrity sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==
+
+uuid@^9.0.0:
+  version "9.0.1"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-9.0.1.tgz#e188d4c8853cc722220392c424cd637f32293f30"
+  integrity sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==
 
 vaul-vue@^0.1.2:
   version "0.1.2"

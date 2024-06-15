@@ -1,5 +1,6 @@
 import homePage from '@/pages/home.page.vue';
 import placePage from '@/pages/place.page.vue';
+import calendarTempPage from '@/pages/temporary-calendar.page.vue';
 import paymentPage from '@/pages/payment.page.vue';
 import notFoundPage from '@/pages/not-found.page.vue';
 import adminPage from '@/pages/admin.page.vue';
@@ -11,6 +12,11 @@ const routes = [
     path: '/place/:id',
     name: 'Place',
     component: placePage,
+  },
+  {
+    path: '/calendar',
+    name: 'Calendar',
+    component: calendarTempPage,
   },
   {
     path: '/',

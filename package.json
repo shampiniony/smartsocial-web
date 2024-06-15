@@ -9,6 +9,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@preact/signals": "^1.2.3",
+    "@schedule-x/calendar": "^1.46.1",
+    "@schedule-x/drag-and-drop": "^1.46.1",
+    "@schedule-x/event-recurrence": "^1.46.1",
+    "@schedule-x/theme-default": "^1.46.1",
+    "@schedule-x/vue": "^1.43.3",
     "@vee-validate/zod": "^4.13.1",
     "@vue-leaflet/vue-leaflet": "^0.10.1",
     "@vueuse/core": "^10.11.0",
@@ -20,7 +26,9 @@
     "clsx": "^2.1.1",
     "leaflet": "^1.9.4",
     "lucide-vue-next": "^0.394.0",
+    "node-ical": "^0.18.0",
     "ol": "^9.2.4",
+    "preact": "^10.22.0",
     "radix-vue": "^1.8.3",
     "remove": "^0.1.5",
     "tailwind-merge": "^2.3.0",

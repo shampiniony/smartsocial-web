@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-import { cart } from '@/store/cart.store';
+import { cart } from '@/store/cart.store'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 </script>

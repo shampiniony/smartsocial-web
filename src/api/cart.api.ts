@@ -22,7 +22,6 @@ async function fetchTicketDetails(ticketId: number): Promise<CartTicket> {
   return response.data;
 }
 
-
 const parseCart = (cart: ApiCart): Partial<CartProps> => {
   return {
     id: cart.id,

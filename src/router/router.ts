@@ -14,7 +14,7 @@ const routes = [
     component: placePage,
   },
   {
-    path: '/calendar',
+    path: '/admin/calendar',
     name: 'Calendar',
     component: calendarTempPage,
   },

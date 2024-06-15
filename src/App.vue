@@ -1,10 +1,10 @@
 <template>
   <div class="app-wrapper">
-    <component :is="currentHeader" />
-    <Sheet />
-    <div class="content">
+    <div :class="{'admin-container': isAdminPath}">
+      <component :is="currentHeader" />
       <router-view />
     </div>
+    <Sheet v-if="!isAdminPath"/>
     <Footer />
   </div>
 </template>
@@ -19,7 +19,18 @@ import Footer from '@/components/footer.vue';
 
 const route = useRoute();
 
+const isAdminPath = computed(() => {
+  return route.path.startsWith('/admin');
+});
+
 const currentHeader = computed(() => {
-  return route.path.startsWith('/admin') ? AdminHeader : Header;
+  return isAdminPath.value ? AdminHeader : Header;
 });
 </script>
+
+<style scoped>
+.admin-container {
+  display: flex;
+  flex-direction: row;
+}
+</style>

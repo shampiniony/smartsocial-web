@@ -593,6 +593,11 @@
   resolved "https://registry.yarnpkg.com/@schedule-x/calendar/-/calendar-1.46.1.tgz#93c66c0b975b90ff04b7d448c21a163814a4b500"
   integrity sha512-nnIu6swOz22oaomibkt5W7HtmTrU2DxZdGQiLYiKm2LQT7de7e74aNEXOTAfBK/sRsJxIAcjU7aSCrutp5jzWA==
 
+"@schedule-x/current-time@^1.46.1":
+  version "1.46.1"
+  resolved "https://registry.yarnpkg.com/@schedule-x/current-time/-/current-time-1.46.1.tgz#d71fa661355a8c9df641cf77c02488b38befd33e"
+  integrity sha512-Ttp0eGS90FVweWI2UPjNZWFj+E/1JpNvcM9t/VOh8iiT+5LMVu/Hjo0bXFFP/L4YiSHI9AFUfx8iaKZzPwCVGA==
+
 "@schedule-x/drag-and-drop@^1.46.1":
   version "1.46.1"
   resolved "https://registry.yarnpkg.com/@schedule-x/drag-and-drop/-/drag-and-drop-1.46.1.tgz#9be3363af6ff495e7b644e0c4ed736ca9971aa3a"
@@ -603,6 +608,16 @@
   resolved "https://registry.yarnpkg.com/@schedule-x/event-recurrence/-/event-recurrence-1.46.1.tgz#cb418e3776cead881a600039aa13d45f46ee47a1"
   integrity sha512-p+YKlq1NM2+0IvQFLixpMfgXYWzJrd3cCh/CEcM+c0RnA3cClXQGbuzeSRS0LAa3D2/9JjorbTHMfhvCSB7E7w==
 
+"@schedule-x/events-service@^1.46.1":
+  version "1.46.1"
+  resolved "https://registry.yarnpkg.com/@schedule-x/events-service/-/events-service-1.46.1.tgz#a6ab90a88574eec443456b73a37db88f8c92e082"
+  integrity sha512-eCCHpcdTY5DtXCEU1lHb91XeC5DjEWrhPUEAWjPTLtzYVVpYxkvqXXYAL78wa92ZmQmnfZleIm5Ket96HHmpUA==
+
+"@schedule-x/resize@^1.46.1":
+  version "1.46.1"
+  resolved "https://registry.yarnpkg.com/@schedule-x/resize/-/resize-1.46.1.tgz#2d3f68c6c259632d56547cb62f269ce8fd8083b6"
+  integrity sha512-sh9yBbcH303Y+D+4g8f3Ued4iDq5YCnZxH5RpotkGlHCv5iBdqCXLt7RJPQ5g41kAyuPTz64IHz9LtevO9OMCg==
+
 "@schedule-x/theme-default@^1.46.1":
   version "1.46.1"
   resolved "https://registry.yarnpkg.com/@schedule-x/theme-default/-/theme-default-1.46.1.tgz#b7b0e98ce153e7b3b8f15c2e9fbdad9112f57236"
@@ -612,7 +627,7 @@
   version "1.43.3"
   resolved "https://registry.yarnpkg.com/@schedule-x/vue/-/vue-1.43.3.tgz#2196d2e054823cae02816225d5ba52cd5d571a4e"
   integrity sha512-06aCxgBjFg2HD8f10ayR5H0fzPnOE1q/T0WhTkwATk5HlELKOgkYSHE+jq+Ez+p1iYUCFHGn4kcKCmc4NEaY4Q==
-  
+
 "@sindresorhus/merge-streams@^2.1.0":
   version "2.3.0"
   resolved "https://registry.npmjs.org/@sindresorhus/merge-streams/-/merge-streams-2.3.0.tgz"
@@ -4127,8 +4142,16 @@ stop-iteration-iterator@^1.0.0:
   dependencies:
     internal-slot "^1.0.4"
 
-"string-width-cjs@npm:string-width@^4.2.0", string-width@^4.1.0:
-  name string-width-cjs
+"string-width-cjs@npm:string-width@^4.2.0":
+  version "4.2.3"
+  resolved "https://registry.npmjs.org/string-width/-/string-width-4.2.3.tgz"
+  integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==
+  dependencies:
+    emoji-regex "^8.0.0"
+    is-fullwidth-code-point "^3.0.0"
+    strip-ansi "^6.0.1"
+
+string-width@^4.1.0:
   version "4.2.3"
   resolved "https://registry.npmjs.org/string-width/-/string-width-4.2.3.tgz"
   integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==
@@ -4174,8 +4197,14 @@ string.prototype.trimstart@^1.0.8:
     define-properties "^1.2.1"
     es-object-atoms "^1.0.0"
 
-"strip-ansi-cjs@npm:strip-ansi@^6.0.1", strip-ansi@^6.0.0, strip-ansi@^6.0.1:
-  name strip-ansi-cjs
+"strip-ansi-cjs@npm:strip-ansi@^6.0.1":
+  version "6.0.1"
+  resolved "https://registry.npmjs.org/strip-ansi/-/strip-ansi-6.0.1.tgz"
+  integrity sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==
+  dependencies:
+    ansi-regex "^5.0.1"
+
+strip-ansi@^6.0.0, strip-ansi@^6.0.1:
   version "6.0.1"
   resolved "https://registry.npmjs.org/strip-ansi/-/strip-ansi-6.0.1.tgz"
   integrity sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==

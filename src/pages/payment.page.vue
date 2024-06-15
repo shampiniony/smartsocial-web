@@ -1,6 +1,6 @@
 <template>
-  <div class="h-screen flex justify-center items-center px-3">
-    <div class="flex flex-col items-center gap-y-4">
+  <div class="h-screen flex justify-center items-center px-3 pt-20">
+    <div v-if='route.query.key == null' class="flex flex-col items-center gap-y-4">
       <div v-if='status && status.payment_status == "succeeded"'>
         <h3 class="font-semibold text-xl text-center">Оплата прошла успешно!</h3>
         <p class="text-lg text-center">Билеты отправлены на вашу электронную почту</p>
@@ -26,6 +26,8 @@
         <Button class="mt-8 bg-primary px-6 py-2 rounded-3xl text-white">Скачать билет</Button>
       </a>
     </div>
+    <PaymentWidget v-if='route.query.key != null' :confirmation-token='route.query.key'
+      :return-url='`${appUrl}${route.path}`' />
   </div>
 </template>
 
@@ -34,7 +36,8 @@ import Button from '@/components/ui/button/Button.vue';
 import Paragraph from '@/models/ticket/paragraph.vue';
 import Status from '@/models/ticket/status.vue';
 import { useRoute } from 'vue-router';
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
+import PaymentWidget from '@/models/cart/payment-widget.vue';
 
 import { getPaymentStatus } from '@/api/payment.api';
 import { PaymentStatus, SucessfulPayment } from '@/types/client/payment-status.interface';
@@ -42,9 +45,27 @@ import { PaymentStatus, SucessfulPayment } from '@/types/client/payment-status.i
 const route = useRoute();
 const status = ref<PaymentStatus | null>(null);
 
-onMounted(async () => {
-  console.log(route.params.id)
+const appUrl = import.meta.env.VITE_APP_URL;
+
+let pollInterval: NodeJS.Timeout | null = null;
+
+const fetchData = async () => {
   status.value = await getPaymentStatus(route.params.id.toString());
+  if (status.value?.payment_status === 'succeeded' && pollInterval) {
+    clearInterval(pollInterval);
+    pollInterval = null;
+  }
+};
+
+onMounted(() => {
+  fetchData();
+  pollInterval = setInterval(fetchData, 5000); // Poll every 5 seconds
+});
+
+onUnmounted(() => {
+  if (pollInterval) {
+    clearInterval(pollInterval);
+  }
 });
 
 const isSuccessful = (status: PaymentStatus | SucessfulPayment): status is SucessfulPayment => {

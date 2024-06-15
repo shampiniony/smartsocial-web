@@ -40,12 +40,12 @@ function groupTicketsByEvent(tickets: CartTicket[]): { name: string; id: number;
   const sections: { name: string; id: number; events: CartTicket[] }[] = [];
 
   tickets.forEach(ticket => {
-    let section = sections.find(section => section.id === ticket.id && section.name === ticket.name);
+    let section = sections.find(section => section.id === ticket.ticket_id && section.name === ticket.name);
 
     if (!section) {
       section = {
         name: ticket.name,
-        id: ticket.id,
+        id: ticket.ticket_id,
         events: []
       };
       sections.push(section);

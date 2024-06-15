@@ -1,52 +1,25 @@
 import axios from 'axios';
 import { CartProps } from '@/store/cart.store';
-import { AdminTicket } from '@/types/admin/admin-ticket.interface';
+import { CartTicket } from '@/types/cart/cart-ticket.interface';
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
 interface ApiCart {
-  id?: number;
-  tickets: ApiTicket[];
+  id: number | null;
+  tickets: CartTicket[];
 }
 
-interface ApiTicket {
-  ticket: number;
-  time: Date;
-  quantity: number;
-}
-
-interface ApiCartResponse {
-  id: number;
-  tickets: ApiTicketResponse[];
-}
-
-interface ApiTicketResponse {
-  id: number;
-  ticket: AdminTicket;
-  time: Date;
-  quantity: number;
-}
-
-const parseCart = (cart: ApiCartResponse): Partial<CartProps> => {
+const parseCart = (cart: ApiCart): Partial<CartProps> => {
   return {
     id: cart.id,
-    tickets: cart.tickets.flatMap((ticket) => {
-      return {
-        quantity: ticket.quantity,
-        time: ticket.time,
-        ...ticket.ticket,
-      };
-    }),
+    tickets: cart.tickets,
   };
 };
 
 export const createCart = async (cart: CartProps): Promise<CartProps> => {
   const data: ApiCart = {
-    tickets: cart.tickets.flatMap((item) => ({
-      ticket: item.id,
-      time: item.time,
-      quantity: item.quantity,
-    })),
+    id: cart.id,
+    tickets: cart.tickets,
   };
 
   const response = await axios.post<CartProps>(apiUrl + '/api/v1/carts/', data);
@@ -62,14 +35,10 @@ export const updateCart = async (
   } else {
     const data: ApiCart = {
       id: cart.id,
-      tickets: cart.tickets.flatMap((ticket) => ({
-        ticket: ticket.id,
-        time: ticket.time,
-        quantity: ticket.quantity,
-      })),
+      tickets: cart.tickets,
     };
 
-    const response = await axios.patch<ApiCartResponse>(
+    const response = await axios.patch<ApiCart>(
       `${apiUrl}/api/v1/carts/${cart.id}/`,
       data
     );

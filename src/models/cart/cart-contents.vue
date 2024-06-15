@@ -8,13 +8,13 @@
       <p class='text-lg font-light'>Составьте свой идеальный маршрут!</p>
     </div>
   </div>
-  <div class='flex gap-5 flex-col pt-10'>
-    <!-- <div v-for='section in cart.items'> -->
-    <!-- <p class='pb-2'>{{ section.name }}</p> -->
-    <TransitionGroup class='flex gap-2 flex-col' name='fade' tag='div'>
-      <Ticket v-for='(ticket, index) in cart.tickets' :key='index' :ticket='ticket' variant='full' />
-    </TransitionGroup>
-    <!-- </div> -->
+  <div class='flex h-full gap-5 flex-col pt-10'>
+    <div v-for='section in groupTicketsByEvent(cart.tickets)'>
+      <p class='pb-2'>{{ section.name }}</p>
+      <TransitionGroup class='flex gap-2 flex-col' name='fade' tag='div'>
+        <Ticket v-for='(ticket, index) in section.events' :key='index' :ticket='ticket' variant='full' />
+      </TransitionGroup>
+    </div>
   </div>
   <div class='flex flex-col gap-10'>
     <div class="flex justify-between items-center">
@@ -34,7 +34,28 @@ import { computed } from 'vue';
 import { cart } from '@/store/cart.store';
 import Button from '@/components/ui/button/CustomButton.vue';
 import Ticket from '@/components/ticket.vue';
+import { CartTicket } from '@/types/cart/cart-ticket.interface';
 
+function groupTicketsByEvent(tickets: CartTicket[]): { name: string; id: number; events: CartTicket[] }[] {
+  const sections: { name: string; id: number; events: CartTicket[] }[] = [];
+
+  tickets.forEach(ticket => {
+    let section = sections.find(section => section.id === ticket.id && section.name === ticket.name);
+
+    if (!section) {
+      section = {
+        name: ticket.name,
+        id: ticket.id,
+        events: []
+      };
+      sections.push(section);
+    }
+
+    section.events.push(ticket);
+  });
+
+  return sections;
+}
 const total = computed(() => cart.tickets.reduce((total, ticket) => {
   return total + (ticket.quantity * ticket.price);
 }, 0))

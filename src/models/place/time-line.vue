@@ -20,7 +20,7 @@ import TimePicker from '@/models/place/time-picker.vue'
 import { Event as IEvent } from '@/types/client/event.interface';
 import { modal } from '@/store/modal.store';
 
-const props = defineProps<{ events: IEvent[] }>();
+defineProps<{ events: IEvent[] }>();
 const activeTime = ref<string | null>(null);
 
 watch(modal, () => {

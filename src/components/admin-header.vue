@@ -17,7 +17,7 @@
         </div>
         <SidebarItem :imgSrc="calendarIcon" to="/admin/calendar" title="Календарь" :isOpen="isOpen"
           :isActive="isActive('/admin/calendar')" />
-        <SidebarItem :imgSrc="scheduleIcon" to="/admin/schedule" title="Расписание" :isOpen="isOpen" />
+        <SidebarItem :imgSrc="scheduleIcon" to="/admin/billing" title="Расписание" :isOpen="isOpen" />
         <SidebarItem :imgSrc="profileIcon" to="/admin/profile" title="Профиль" :isOpen="isOpen" />
         <SidebarItem :imgSrc="plusIcon" to="/admin/add-event" title="Добавить" :isOpen="isOpen" />
 

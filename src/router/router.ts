@@ -5,6 +5,7 @@ import PaymentPage from '@/pages/payment.page.vue';
 import NotFoundPage from '@/pages/not-found.page.vue';
 import AdminPage from '@/pages/admin.page.vue';
 import BookingPage from '@/pages/booking.page.vue';
+import Billings from '@/models/admin/billings/billings.vue';
 
 import { createRouter, createWebHistory } from 'vue-router';
 
@@ -21,6 +22,11 @@ const routes = [
     path: '/admin/calendar',
     name: 'Calendar',
     component: CalendarTempPage,
+  },
+  {
+    path: '/admin/billing',
+    name: 'Calendar',
+    component: Billings,
   },
   {
     path: '/',

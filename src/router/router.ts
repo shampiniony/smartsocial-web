@@ -1,9 +1,10 @@
-import homePage from '@/pages/home.page.vue';
-import placePage from '@/pages/place.page.vue';
-import calendarTempPage from '@/pages/temporary-calendar.page.vue';
-import paymentPage from '@/pages/payment.page.vue';
-import notFoundPage from '@/pages/not-found.page.vue';
-import adminPage from '@/pages/admin.page.vue';
+import HomePage from '@/pages/home.page.vue';
+import PlacePage from '@/pages/place.page.vue';
+import CalendarTempPage from '@/pages/temporary-calendar.page.vue';
+import PaymentPage from '@/pages/payment.page.vue';
+import NotFoundPage from '@/pages/not-found.page.vue';
+import AdminPage from '@/pages/admin.page.vue';
+import BookingPage from '@/pages/booking.page.vue';
 
 import { createRouter, createWebHistory } from 'vue-router';
 
@@ -14,32 +15,37 @@ const routes = [
   {
     path: '/place/:id',
     name: 'Place',
-    component: placePage,
+    component: PlacePage,
   },
   {
     path: '/admin/calendar',
     name: 'Calendar',
-    component: calendarTempPage,
+    component: CalendarTempPage,
   },
   {
     path: '/',
     name: 'Home',
-    component: homePage,
+    component: HomePage,
   },
   {
     path: '/payment/:id',
     name: 'Payment',
-    component: paymentPage,
+    component: PaymentPage,
   },
   {
     path: '/:catchAll(.*)',
     name: '404',
-    component: notFoundPage,
+    component: NotFoundPage,
   },
   {
     path: '/admin',
     name: 'Admin',
-    component: adminPage,
+    component: AdminPage,
+  },
+  {
+    path: '/booking/:id',
+    name: 'Booking',
+    component: BookingPage,
   },
 ];
 

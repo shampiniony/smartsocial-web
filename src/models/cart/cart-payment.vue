@@ -81,10 +81,8 @@ import { Input } from '@/components/ui/input'
 import { cart } from '@/store/cart.store'
 import Button from '@/components/ui/button/CustomButton.vue'
 
-const total = computed(() => cart.items.reduce((total, place) => {
-  return total + place.tickets.reduce((placeTotal, ticket) => {
-    return placeTotal + (ticket.quantity * ticket.price)
-  }, 0)
+const total = computed(() => cart.tickets.reduce((total, ticket) => {
+  return total + (ticket.quantity * ticket.price);
 }, 0))
 
 const formSchema = toTypedSchema(z.object({

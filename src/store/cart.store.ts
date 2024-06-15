@@ -4,20 +4,14 @@ import { updateCart } from '@/api/cart.api';
 
 let isUpdating = false;
 
-interface CartPlace {
-  name: string;
-  tickets: CartTicket[];
-}
-
-type CartStatus = 'contents' | 'payment';
+type CartStatus = 'contents' | 'payment' | 'widget';
 export interface CartProps {
   id: number | null;
   visible: boolean;
   status: CartStatus;
-  items: CartPlace[];
+  tickets: CartTicket[];
 }
 
-// Helper function to load cart data from localStorage
 const loadCartFromLocalStorage = (): CartProps => {
   const savedCart = localStorage.getItem('cart');
   if (savedCart) {
@@ -31,7 +25,7 @@ const loadCartFromLocalStorage = (): CartProps => {
     id: null,
     visible: false,
     status: 'contents',
-    items: [],
+    tickets: [],
   };
 };
 
@@ -43,20 +37,31 @@ watch(
     if (isUpdating) return;
     isUpdating = true;
 
-    newCart.items.forEach((place) => {
-      place.tickets = place.tickets.filter((ticket) => ticket.quantity > 0);
+    // Filter out tickets with quantity <= 0
+    const filteredTickets = newCart.tickets.filter(
+      (ticket) => ticket.quantity > 0
+    );
+
+    // Create a new cart object with filtered tickets and update it
+    const updatedCart = await updateCart({
+      ...newCart,
+      tickets: filteredTickets,
     });
 
-    newCart.items = newCart.items.filter((x) => x.tickets.length > 0);
-    newCart = await updateCart(newCart);
+    // Update reactive cart properties
+    Object.assign(cart, updatedCart);
 
-    newCart.visible = cart.visible;
+    // Ensure the visibility state is preserved
+    cart.visible = newCart.visible;
 
-    localStorage.setItem('cart', JSON.stringify(newCart));
+    // Save the updated cart to localStorage
+    localStorage.setItem('cart', JSON.stringify(cart));
 
     nextTick(() => {
       isUpdating = false;
     });
+
+    console.log(cart);
   },
   { deep: true }
 );

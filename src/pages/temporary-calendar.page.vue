@@ -19,17 +19,19 @@ import ical from 'node-ical'
 const directEvents = ical.sync.parseICS(`
 BEGIN:VCALENDAR
 VERSION:2.0
+PRODID:-//ical.marudot.com//iCal Event Maker
 CALSCALE:GREGORIAN
-BEGIN:VEVENT
-SUMMARY:Hey look! An example event!
-DTSTART;TZID=America/New_York:20130802T103400
-DTEND;TZID=America/New_York:20130802T110400
-LOCATION:1000 Broadway Ave.\, Brooklyn
-DESCRIPTION: Do something in NY.
-STATUS:CONFIRMED
-UID:7014-1567468800-1567555199@peterbraden@peterbraden.co.uk
-END:VEVENT
-END:VCALENDAR
+BEGIN:VTIMEZONE
+TZID:Europe/Moscow
+LAST-MODIFIED:20231222T233358Z
+TZURL:https://www.tzurl.org/zoneinfo-outlook/Europe/Moscow
+X-LIC-LOCATION:Europe/Moscow
+BEGIN:STANDARD
+TZNAME:MSK
+TZOFFSETFROM:+0300
+TZOFFSETTO:+0300
+DTSTART:19700101T000000
+END:STANDARD\r\nEND:VTIMEZONE\r\nBEGIN:VEVENT\r\nDTSTAMP:20240611T233748Z\r\nUID:1718149042996-99594@ical.marudot.com\r\nDTSTART;TZID=Europe/Moscow:20240605T120000\r\nRRULE:FREQ=WEEKLY;BYDAY=SU,MO,TU,WE,TH\r\nDTEND;TZID=Europe/Moscow:20240605T130000\r\nSUMMARY:event1\r\nDESCRIPTION:Some description\r\nEND:VEVENT\r\nEND:VCALENDAR
 `);
 // log the ids of these events
 console.log(Object.keys(directEvents));

@@ -14,7 +14,7 @@ import { useRoute } from 'vue-router';
 const route = useRoute();
 
 const place = ref<Place | null>(null);
-const apiUrl = import.meta.env.VITE_API_URL;
+import { apiUrl } from '@/router/router';
 
 const fetchData = async () => {
   try {

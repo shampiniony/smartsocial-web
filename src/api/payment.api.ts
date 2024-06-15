@@ -5,7 +5,7 @@ import {
 } from '@/types/client/payment-status.interface';
 import axios from 'axios';
 
-const apiUrl = import.meta.env.VITE_API_URL;
+import { apiUrl } from '@/router/router';
 
 export const createPayment = async (
   cart_id: number,

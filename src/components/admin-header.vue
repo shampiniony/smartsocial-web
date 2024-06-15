@@ -15,11 +15,10 @@
           <img class="w-8" :src="searchIcon" />
           <input v-if="isOpen" v-model="searchQuery" class="border-b-2 w-4/5 bg-secondary no-focus" type="text" />
         </div>
-        <SidebarItem :imgSrc="calendarIcon" to="/admin/calendar" title="Календарь" :isOpen="isOpen"
-          :isActive="isActive('/admin/calendar')" />
-        <SidebarItem :imgSrc="scheduleIcon" to="/admin/billing" title="Расписание" :isOpen="isOpen" />
-        <SidebarItem :imgSrc="profileIcon" to="/admin/profile" title="Профиль" :isOpen="isOpen" />
-        <SidebarItem :imgSrc="plusIcon" to="/admin/add-event" title="Добавить" :isOpen="isOpen" />
+        <SidebarItem :imgSrc="calendarIcon" to="/admin/calendar" title="Календарь" :isOpen="isOpen" :isActive="isActive('/admin/calendar')"/>
+        <SidebarItem :imgSrc="scheduleIcon" to="/admin/schedule" title="Расписание" :isOpen="isOpen" :isActive="isActive('/admin/schedule')"/>
+        <SidebarItem :imgSrc="profileIcon" to="/admin/buyers" title="Профиль" :isOpen="isOpen" :isActive="isActive('/admin/buyers')"/>
+        <SidebarItem :imgSrc="plusIcon" to="/admin/add-event" title="Добавить" :isOpen="isOpen" :isActive="isActive('/admin/add-event')"/>
 
         <button @click="toggleSidebar"
           class="p-2 rounded-3xl bg-gray-200 absolute right-0 top-6 transform translate-x-1/2">

@@ -1,3 +1,5 @@
+import BuyerPage from '@/pages/buyers.page.vue';
+import CalendarTempPage from '@/pages/temporary-calendar.page.vue';
 import HomePage from '@/pages/home.page.vue';
 import PlacePage from '@/pages/place.page.vue';
 import CalendarTempPage from '@/pages/temporary-calendar.page.vue';
@@ -53,6 +55,16 @@ const routes = [
     name: 'Booking',
     component: BookingPage,
   },
+  {
+    path: '/admin/calendar',
+    name: 'Calendar',
+    component: CalendarTempPage,
+  },
+  {
+    path: '/admin/buyers',
+    name: 'Buyers',
+    component: BuyerPage
+  }
 ];
 
 export const router = createRouter({

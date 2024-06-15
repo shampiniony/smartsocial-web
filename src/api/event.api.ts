@@ -33,6 +33,24 @@ export async function getEvents(): Promise<AdminEvent[]> {
   }
 }
 
+export const updateICalOnServer = async (event_id: number, updatedIcal: string) => {
+  try {
+    console.log("ICAL:" + updatedIcal)
+
+    const response = await axios.patch(`${apiUrl}/api/v1/events/${event_id}/`, {
+      icalendar_data: updatedIcal
+      // name: "wow"
+    });
+    console.log('ICal data updated successfully:', response.data);
+  } catch (error) {
+    console.error('Failed to update iCal data:', error);
+  }
+};
+
+export const postEvent = async(event: AdminEvent) => {
+  
+}
+
 export async function getEventById(id: number): Promise<AdminEvent> {
   const response = await axios.get<AdminEvent>(
     `${apiUrl}/api/v1/events/${id}/`

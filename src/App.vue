@@ -1,9 +1,12 @@
 <template>
-  <div :class="{'admin-container': isAdminPath}">
-    <component :is="currentHeader" />
-    <router-view />
+  <div class="app-wrapper">
+    <div :class="{'admin-container': isAdminPath}">
+      <component :is="currentHeader" />
+      <router-view />
+    </div>
+    <Sheet v-if="!isAdminPath"/>
+    <Footer />
   </div>
-  <Sheet v-if="!isAdminPath"/>
 </template>
 
 <script setup lang="ts">
@@ -12,6 +15,7 @@ import { useRoute } from 'vue-router';
 import Header from '@/components/header.vue';
 import AdminHeader from '@/components/admin-header.vue';
 import Sheet from '@/models/cart/cart-sheet.vue';
+import Footer from '@/components/footer.vue';
 
 const route = useRoute();
 

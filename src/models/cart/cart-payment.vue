@@ -66,8 +66,9 @@
 import { useForm } from 'vee-validate'
 import { toTypedSchema } from '@vee-validate/zod'
 import * as z from 'zod'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { createPayment } from '@/api/payment.api'
+import { useRouter } from 'vue-router'
 
 import {
   FormControl,
@@ -80,6 +81,9 @@ import {
 import { Input } from '@/components/ui/input'
 import { cart } from '@/store/cart.store'
 import Button from '@/components/ui/button/CustomButton.vue'
+import { PaymentData } from '@/types/client/payment-status.interface'
+
+const router = useRouter();
 
 const total = computed(() => cart.tickets.reduce((total, ticket) => {
   return total + (ticket.quantity * ticket.price);
@@ -96,15 +100,24 @@ const form = useForm({
   validationSchema: formSchema,
 })
 
+const data = ref<PaymentData | null>(null);
+
 const onSubmit = form.handleSubmit(async (values) => {
   console.log('Form submitted!', values)
   if (cart.id != null) {
-    const data = await createPayment(cart.id, {
+    data.value = await createPayment(cart.id, {
       email: values.email,
       phone: values.phone,
       first_name: values.firstName,
       last_name: values.lastName
-    })  
+    })
+
+    cart.tickets = [];
+    cart.id = null;
+    cart.status = 'contents';
+    cart.visible = false;
+    
+    router.push(`/payment/${data.value.payment_id}?key=${data.value.confirmation_token}`)
   }
 })
 </script>

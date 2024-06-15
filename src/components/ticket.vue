@@ -35,27 +35,21 @@ interface TicketProps {
 
 const increaseTicket = (ticket: CartTicket | TimedTicket) => {
   if (isCartTicket(ticket)) {
-    ticket.quantity++
+    ticket.quantity++;
   } else {
-    let qtty = 0;
     let found = false;
 
-    cart.tickets = cart.tickets.flatMap(x => {
-      if (x.ticket_id == ticket.ticket_id && x.time === ticket.time) {
-        qtty = ++x.quantity;
+    cart.tickets = cart.tickets.map(x => {
+      if (x.ticket_id == ticket.ticket_id && x.time.toISOString() == ticket.time.toISOString()) {
         found = true;
-      } else {
-        qtty = x.quantity
+        return { ...x, quantity: x.quantity + 1 };
       }
+      return x;
+    });
 
-      return {
-        ...x,
-        quantity: qtty
-      }
-    })
+    console.log(found)
 
     if (!found) {
-      console.log("not found!", cart.tickets, ticket)
       cart.tickets.push({ ...ticket, quantity: 1 });
     }
   }
@@ -63,12 +57,14 @@ const increaseTicket = (ticket: CartTicket | TimedTicket) => {
 
 const decreaseTicket = (ticket: CartTicket | TimedTicket) => {
   if (isCartTicket(ticket)) {
-    ticket.quantity--
+    ticket.quantity--;
   } else {
-    cart.tickets = cart.tickets.flatMap(x => ({
-      ...x,
-      quantity: (x.ticket_id == ticket.ticket_id && x.time == ticket.time) ? --x.quantity : x.quantity
-    }))
+    cart.tickets = cart.tickets.map(x => {
+      if (x.ticket_id == ticket.ticket_id && x.time.toISOString() == ticket.time.toISOString()) {
+        return { ...x, quantity: x.quantity - 1 };
+      }
+      return x;
+    });
   }
 }
 
@@ -76,17 +72,16 @@ const removeTicket = (ticket: CartTicket | TimedTicket) => {
   if (isCartTicket(ticket)) {
     ticket.quantity = 0;
   } else {
-    let eh = cart.tickets.find(x => x.ticket_id == ticket.ticket_id)?.quantity;
-    if (eh)
-      eh = 0;
+    cart.tickets = cart.tickets.filter(x => !(x.ticket_id === ticket.ticket_id && x.time.toISOString() === ticket.time.toISOString()));
   }
 }
+
 
 const getCount = (ticket: CartTicket | TimedTicket): number => {
   if (isCartTicket(ticket)) {
     return ticket.quantity;
   } else {
-    return cart.tickets.find(x => x.ticket_id == ticket.ticket_id && x.time == ticket.time)?.quantity ?? 0;
+    return cart.tickets.find(x => x.ticket_id == ticket.ticket_id && x.time.toISOString() == ticket.time.toISOString())?.quantity ?? 0;
   }
 }
 

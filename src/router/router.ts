@@ -1,5 +1,6 @@
 import homePage from '@/pages/home.page.vue';
 import placePage from '@/pages/place.page.vue';
+import paymentPage from '@/pages/payment.page.vue';
 import notFoundPage from '@/pages/not-found.page.vue';
 import ticketPage from '@/pages/ticket.page.vue';
 import adminPage from '@/pages/admin.page.vue';
@@ -16,6 +17,11 @@ const routes = [
     path: '/',
     name: 'Home',
     component: homePage,
+  },
+  {
+    path: '/payment/:id',
+    name: 'Payment',
+    component: paymentPage,
   },
   {
     path: '/:catchAll(.*)',

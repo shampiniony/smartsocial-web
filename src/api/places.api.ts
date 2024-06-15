@@ -3,7 +3,7 @@ import { Place } from '@/types/client/place.interface';
 import { places } from '@/store/places.store';
 import { Event as IEvent } from '@/types/client/event.interface';
 
-const apiUrl = import.meta.env.VITE_API_URL;
+import { apiUrl } from '@/router/router';
 
 const getPlaces = async (date: Date) => {
   try {

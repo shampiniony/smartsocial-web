@@ -1,6 +1,6 @@
-import axios from "axios";
+import axios from 'axios';
 
-const apiUrl = import.meta.env.VITE_API_URL;
+import { apiUrl } from '@/router/router';
 
 export interface AdminEvent {
   id: number;
@@ -49,4 +49,11 @@ export const updateICalOnServer = async (event_id: number, updatedIcal: string) 
 
 export const postEvent = async(event: AdminEvent) => {
   
+}
+
+export async function getEventById(id: number): Promise<AdminEvent> {
+  const response = await axios.get<AdminEvent>(
+    `${apiUrl}/api/v1/events/${id}/`
+  );
+  return response.data;
 }

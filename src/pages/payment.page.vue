@@ -26,7 +26,7 @@
         <Button class="mt-8 bg-primary px-6 py-2 rounded-3xl text-white">Скачать билет</Button>
       </a>
     </div>
-    <PaymentWidget v-if='route.query.key != null' :confirmation-token='route.query.key'
+    <PaymentWidget v-if='route.query.key != null' :confirmation-token='route.query.key.toString()'
       :return-url='`${appUrl}${route.path}`' />
   </div>
 </template>
@@ -45,7 +45,7 @@ import { PaymentStatus, SucessfulPayment } from '@/types/client/payment-status.i
 const route = useRoute();
 const status = ref<PaymentStatus | null>(null);
 
-const appUrl = import.meta.env.VITE_APP_URL;
+import { appUrl } from '@/router/router';
 
 let pollInterval: NodeJS.Timeout | null = null;
 

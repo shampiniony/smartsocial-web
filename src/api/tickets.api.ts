@@ -1,7 +1,7 @@
 import { Ticket, TimedTicket } from '@/types/client/ticket.interface';
 import axios from 'axios';
 
-const apiUrl = import.meta.env.VITE_API_URL;
+import { apiUrl } from '@/router/router';
 
 export const getTickets = async (event_id: number): Promise<Ticket[]> => {
   const result = await axios.get<Ticket[]>(

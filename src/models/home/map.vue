@@ -2,7 +2,7 @@
   <div id="map" class="w-full h-full relative"></div>
   <Transition name="fade" mode='out-in'>
     <div id="popup" ref="popup" v-show="popupVisible">
-      <MapPopup v-if="places.selected != null" :place="places.all.find(x => x.id == places.selected)" />
+      <MapPopup v-if="places.selected != null" :place="places.all.find(x => x.id == places.selected) as Place" />
     </div>
   </Transition>
 </template>
@@ -23,12 +23,13 @@ import Overlay from 'ol/Overlay';
 
 import { places } from '@/store/places.store';
 import MapPopup from '@/models/home/map-popup.vue';
+import { Place } from '@/types/client/place.interface';
 
 const popupVisible = ref(false);
 const popup = ref(null);
 const vectorSource = new VectorSource();
 
-const addMarkers = (markers) => {
+const addMarkers = (markers: any[]) => {
   vectorSource.clear();
   markers.forEach(marker => {
     const iconFeature = new Feature({

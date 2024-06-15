@@ -1,4 +1,4 @@
-type TicketType = 'family' | 'group' | 'adult' | 'child' | 'discount';
+export type TicketType = 'family' | 'group' | 'adult' | 'child' | 'discount';
 
 export interface Ticket {
   ticket_id: number;

@@ -13,7 +13,6 @@
 import {
   Sheet,
   SheetContent,
-  SheetTrigger,
 } from '@/components/ui/sheet'
 import { cart } from '@/store/cart.store';
 import CartContents from '@/models/cart/cart-contents.vue';

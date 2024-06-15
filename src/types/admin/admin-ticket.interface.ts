@@ -6,4 +6,6 @@ export interface AdminTicket {
   type: TicketType;
   price: number;
   personas: number;
+  event_id: number;
+  event_name: string;
 }

@@ -4,7 +4,7 @@ import { updateCart } from '@/api/cart.api';
 
 let isUpdating = false;
 
-type CartStatus = 'contents' | 'payment';
+type CartStatus = 'contents' | 'payment' | 'widget';
 export interface CartProps {
   id: number | null;
   visible: boolean;

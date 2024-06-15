@@ -1,8 +1,8 @@
 <template>
 	<div class="w-[98%] lg:w-4/5 max-w-[1400px] mx-auto py-10 ">
 		<div class="flex flex-col md:flex-row justify-center gap-x-4 items-center md:items-start mb-4 md:mb-0">
-			<img :src="placeImage" alt="Музей" class="md:max-w-[500px] md:w-1/2 mb-5 rounded-3xl" />
-			<div class="w-full">
+			<img :src="props.place.images[0].src" alt="Музей" class="md:max-w-[500px] md:w-1/2 mb-5 rounded-3xl" />
+			<div class="md:max-w-[500px] md:w-1/2">
 				<div>
 					<p class="w-max rounded-xl px-4 py-2 border-2">Музеи</p>
 				</div>
@@ -22,7 +22,6 @@
 				</div>
 			</div>
 		</div>
-
 		<Popover>
 			<PopoverTrigger as-child>
 				<Button variant="outline" :class="cn(
@@ -34,9 +33,10 @@
 				</Button>
 			</PopoverTrigger>
 			<PopoverContent class="w-auto p-0">
-				<Calendar v-model="date" initial-focus />
+				<Calendar :week-starts-on='1' v-model="date" initial-focus />
 			</PopoverContent>
 		</Popover>
+
 	</div>
 
 	<TimeLine :events='events' />
@@ -46,7 +46,6 @@
 
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-import placeImage from '@/assets/place.jpg'
 import arrowUp from '@/assets/icons/arrow-up.svg'
 import { getEvents } from '@/api/places.api';
 import { Calendar as CalendarIcon } from 'lucide-vue-next'
@@ -64,15 +63,15 @@ import {
 	getLocalTimeZone,
 } from '@internationalized/date'
 
-import { IPlace } from './place.interface';
+import { Place } from '@/types/client/place.interface';
 import { Event as IEvent } from '@/types/client/event.interface'
 import TimeLine from './time-line.vue';
 
 const isTextVisible = ref(false)
-const props = defineProps<{ place: IPlace }>();
+const props = defineProps<{ place: Place }>();
 const today = new Date();
 
-const date = ref<DateValue>(new CalendarDate(today.getFullYear(), today.getMonth(), today.getDay()));
+const date = ref<DateValue>(new CalendarDate(today.getFullYear(), today.getMonth() + 1, today.getDate()));
 const events = ref<IEvent[]>([]);
 
 const df = new DateFormatter('en-US', {

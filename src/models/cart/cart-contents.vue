@@ -10,7 +10,7 @@
   </div>
   <div class='flex h-full gap-5 flex-col pt-10'>
     <div v-for='section in groupTicketsByEventAndTime(cart.tickets)'>
-      <p class='pb-2'>{{ section.event_name }} {{ section.time.toISOString() }}</p>
+      <p class='pb-2'>{{ section.event_name }} {{ section.time.toLocaleString() }}</p>
       <TransitionGroup class='flex gap-2 flex-col' name='fade' tag='div'>
         <Ticket v-for='(ticket, index) in section.tickets' :key='index' :ticket='ticket' variant='full' />
       </TransitionGroup>
@@ -40,7 +40,7 @@ function groupTicketsByEventAndTime(tickets: CartTicket[]): { event_name: string
   const sections: { event_name: string; event_id: number; time: Date; tickets: CartTicket[] }[] = [];
 
   tickets.forEach(ticket => {
-    let section = sections.find(section => section.event_id === ticket.event_id && section.event_name === ticket.event_name && section.time.getTime() === ticket.time.getTime());
+    let section = sections.find(section => section.event_id === ticket.event_id && section.time.toISOString() === ticket.time.toISOString());
 
     if (!section) {
       section = {

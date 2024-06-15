@@ -11,13 +11,13 @@
           </div>
         </div>
 
-        <div class="flex p-2 space-x-2">
+        <!-- <div class="flex p-2 space-x-2">
           <img class="w-8" :src="searchIcon" />
           <input v-if="isOpen" v-model="searchQuery" class="border-b-2 w-4/5 bg-secondary no-focus" type="text" />
-        </div>
+        </div> -->
         <SidebarItem :imgSrc="calendarIcon" to="/admin/calendar" title="Календарь" :isOpen="isOpen"
           :isActive="isActive('/admin/calendar')" />
-        <SidebarItem :imgSrc="scheduleIcon" to="/admin/billing" title="Расписание" :isOpen="isOpen" />
+        <SidebarItem :imgSrc="scheduleIcon" to="/admin/billing" title="Транзакции" :isOpen="isOpen" :isActive="isActive('/admin/billing')"/>
         <SidebarItem :imgSrc="profileIcon" to="/admin/profile" title="Профиль" :isOpen="isOpen" />
         <SidebarItem :imgSrc="plusIcon" to="/admin/add-event" title="Добавить" :isOpen="isOpen" />
 

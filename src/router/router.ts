@@ -27,14 +27,14 @@ const routes = [
         component: PaymentPage,
       },
       {
-        path: '/:catchAll(.*)',
-        name: '404',
-        component: NotFoundPage,
-      },
-      {
         path: '/booking/:id',
         name: 'Booking',
         component: BookingPage,
+      },
+      {
+        path: '/:catchAll(.*)',
+        name: '404',
+        component: NotFoundPage,
       },
     ],
   },

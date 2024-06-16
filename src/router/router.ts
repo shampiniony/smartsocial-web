@@ -11,6 +11,7 @@ import BookingPage from '@/pages/booking.page.vue';
 import BillingsPage from '@/pages/billings.page.vue';
 import LoginPage from '@/pages/login.page.vue';
 import Registration from '@/pages/registration.page.vue';
+import UsersList from '@/pages/userslist.page.vue';
 
 import { createRouter, createWebHistory } from 'vue-router';
 
@@ -76,6 +77,11 @@ const routes = [
         path: 'registration',
         name: 'Registration',
         component: Registration,
+      },
+      {
+        path: 'userslist',
+        name: 'UsersList',
+        component: UsersList,
       }
     ],
   }, 

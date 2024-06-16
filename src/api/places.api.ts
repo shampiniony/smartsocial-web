@@ -11,7 +11,6 @@ const getPlaces = async (date: Date) => {
     const endDate = new Date(date.setHours(23, 59, 59, 999));
 
     const response = await axios.get(`${apiUrl}/api/v1/places/`);
-
     places.all = response.data;
   } catch (error) {
     console.error('Error fetching places:', error);

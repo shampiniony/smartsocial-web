@@ -23,7 +23,7 @@
 
         <button @click="toggleSidebar"
           class="p-2 rounded-3xl bg-gray-200 absolute right-0 top-6 transform translate-x-1/2">
-          <img class="w-6 h-6 rounded-3xl" :class="{ 'rotate-180': isOpen }" @click="toggleText" :src="doubleArrow" />
+          <img class="w-6 h-6 rounded-3xl" :class="{ 'rotate-180': isOpen }" :src="doubleArrow" />
         </button>
       </div>
     </div>
@@ -38,12 +38,10 @@ import scheduleIcon from '@/assets/icons/schedule.icon.svg'
 import profileIcon from '@/assets/icons/profile.icon.svg'
 import plusIcon from '@/assets/icons/plus.icon.svg'
 import SidebarItem from './sidebar-item.vue'
-import searchIcon from '@/assets/icons/search.icon.svg'
 import logoIcon from '@/assets/logo.svg'
 import { useRoute, useRouter } from 'vue-router'
 
 const isOpen = ref(false)
-const searchQuery = ref('')
 const route = useRoute()
 const router = useRouter()
 

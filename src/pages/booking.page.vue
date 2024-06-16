@@ -47,7 +47,7 @@ const groupBookingsByEvent = async (bookings: Booking[]): Promise<{ event: Admin
     })
   );
 
-  return groupedBookings;
+  return groupedBookings.filter(x => x.event != null) as { event: AdminEvent; bookings: Booking[] }[];
 }
 
 const formatDate = (date: Date) => {

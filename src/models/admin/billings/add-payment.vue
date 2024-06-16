@@ -3,7 +3,7 @@
     <h1 class='text-xl'>Создать Оплату</h1>
     <div class='grid h-full w-full gap-5 grid-cols-2'>
       <div class='border rounded-sm'>
-        <div class='flex border-b p-2'>
+        <div class='flex border-b w-full items-center justify-between h-12 p-2'>
           <p>Клиент</p>
         </div>
         <div class='p-2 flex flex-col gap-2'>
@@ -52,16 +52,18 @@
         </div>
       </div>
       <div class='border rounded-sm'>
-        <div class='flex border-b w-full'>
-          <p class='p-2'>Корзина</p>
+        <div class='flex border-b w-full items-center justify-between p-2 h-12'>
+          <p>Корзина</p>
+          <Button @click='modal.open = true' size='xs' variant="outline">
+            Добавить в корзину
+          </Button>
         </div>
         <div class='p-2'>
           hello
         </div>
       </div>
-
-
     </div>
+    <TicketModal />
   </div>
 </template>
 
@@ -75,4 +77,7 @@ import {
   FormMessage
 } from '@/components/ui/form';
 import Input from '@/components/ui/input/Input.vue';
+import Button from '@/components/ui/button/Button.vue';
+import TicketModal from './ticket-modal.vue';
+import { modal } from '@/store/admin-modal.store';
 </script>

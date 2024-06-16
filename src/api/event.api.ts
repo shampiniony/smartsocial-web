@@ -47,9 +47,9 @@ export const updateICalOnServer = async (event_id: number, updatedIcal: string) 
   }
 };
 
-export const postEvent = async(event: AdminEvent) => {
+// export const postEvent = async(event: AdminEvent) => {
   
-}
+// }
 
 export async function getEventById(id: number): Promise<AdminEvent> {
   const response = await axios.get<AdminEvent>(

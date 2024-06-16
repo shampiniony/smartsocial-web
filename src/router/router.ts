@@ -8,7 +8,6 @@ import PlacePage from '@/pages/place.page.vue';
 import PaymentPage from '@/pages/payment.page.vue';
 import NotFoundPage from '@/pages/not-found.page.vue';
 import BookingPage from '@/pages/booking.page.vue';
-import HomePage from '@/pages/home.page.vue';
 import BillingsPage from '@/pages/billings.page.vue';
 
 import { createRouter, createWebHistory } from 'vue-router';
@@ -72,16 +71,6 @@ const routes = [
         component: BillingsPage,
       },
     ],
-  },
-  {
-    path: '/admin/calendar',
-    name: 'Calendar',
-    component: CalendarTempPage,
-  },
-  {
-    path: '/admin/buyers',
-    name: 'Buyers',
-    component: BuyerPage
   }
 ];
 

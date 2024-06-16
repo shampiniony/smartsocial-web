@@ -38,7 +38,7 @@ const generateRandomId = () => {
   return Math.floor(Math.random() * 1000000);
 };
 
-export const getICalData = (event_id: number, title: string, icalData: string): IEventTime => {
+export const getICalData = (event_id: number, title: string, icalData: string): IEventTime[] => {
   const events = [];
   const eventRegex = /BEGIN:VEVENT[\s\S]*?END:VEVENT/g;
 

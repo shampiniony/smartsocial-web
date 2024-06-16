@@ -7,7 +7,6 @@
 					<p class="w-max rounded-xl px-4 py-2 border-2">Музеи</p>
 				</div>
 				<h1 class="pt-4 text-2xl">{{ props.place.name }}
-					<!-- Музей истории со вкусом «Коломенская пастила» -->
 				</h1>
 				<h3 class="text-gray-500 mt-2">{{ props.place.address }}</h3>
 				<div class="px-3 py-4 md:px-4 md:py-8 border-2 rounded-3xl mt-4">
@@ -36,7 +35,6 @@
 				<Calendar :week-starts-on='1' v-model="date" initial-focus />
 			</PopoverContent>
 		</Popover>
-
 	</div>
 
 	<TimeLine :events='events' />

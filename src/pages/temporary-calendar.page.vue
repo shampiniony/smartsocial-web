@@ -1,7 +1,9 @@
 <template>
-  <div class="w-full" @click="handleClick">
-    <ScheduleXCalendar class="z-0" v-if="calendarApp" :calendar-app="calendarApp" />
-    <!-- <EventEditor/> -->
+  <div class="flex w-full bg-secondary">
+    <div class="w-full">
+      <ScheduleXCalendar class="z-0" v-if="calendarApp" :calendar-app="calendarApp" />
+    </div>
+    <EventEditor :is-open="isOpen" @toggle-sidebar="toggleSidebar" />
   </div>
 </template>
 
@@ -14,25 +16,21 @@ import { createDragAndDropPlugin } from '@schedule-x/drag-and-drop'
 import { createResizePlugin } from '@schedule-x/resize'
 import '@schedule-x/theme-default/dist/index.css'
 import { getEvents, updateICalOnServer } from '@/api/event.api'
-import { formatDateTimeForICal, getICalData } from '@/utils/ical.parser'
+import { formatDateTimeForICal, getICalData } from '@/custom-utils/ical.parser'
 import { IEventTime } from '@/interfaces/ical.interface'
 import EventEditor from '@/models/calendar/event-editor.vue'
 
+function toggleSidebar() {
+  isOpen.value = !isOpen.value;
+}
+
 const directEvents = ref<IEventTime[]>([]);
 let iCals: {
-  event_id: number,
+  event_id?: number,
   ical: string
 }[] = []
 const calendarApp = ref<any>(null);
-const showModal = ref(false);
-const modalTop = ref(0);
-const modalLeft = ref(0);
-
-const handleClick = (event: MouseEvent) => {
-  modalTop.value = event.clientY;
-  modalLeft.value = event.clientX;
-  showModal.value = true;
-};
+const isOpen = ref(false);
 
 const updateICalDate = (event_id: number, icalData: string, index: number, startTime: string, endTime: string) => {
   const dtstartRegex = /DTSTART:[^\n]*/g;
@@ -67,10 +65,10 @@ const loadEvents = async () => {
   try {
     const eventResponses = await getEvents();
     console.log(eventResponses)
-    directEvents.value = eventResponses.flatMap(e => getICalData(e.id, e.name, e.icalendar_data));
+    directEvents.value = eventResponses.flatMap(e => getICalData(e.id!, e.name, e.icalendar_data));
     
     iCals = eventResponses.map(e => ({
-      event_id: e.id,
+      event_id: e.id!,
       ical: e.icalendar_data
     }));
     console.log(directEvents.value)
@@ -115,10 +113,18 @@ const loadEvents = async () => {
           console.log('onClickAgendaDate', date) // e.g. 2024-01-01
         },
         onDoubleClickDate(date) {
-          console.log('onClickDate', date) // e.g. 2024-01-01
+          console.log('onClickDate', date)
         },
         onDoubleClickDateTime(dateTime) {
-          console.log('onDoubleClickDateTime', dateTime) // e.g. 2024-01-01 12:37
+          const startTime = formatDateTimeForICal(dateTime);
+          const duration = 90;
+          const endTime = startTime + duration;
+
+          isOpen.value = true;
+
+          console.log(isOpen.value)
+          console.log(startTime)
+          console.log('onDoubleClickDateTime', dateTime)
         },
         onClickPlusEvents(date) {
           console.log('onClickPlusEvents', date) // e.g. 2024-01-01

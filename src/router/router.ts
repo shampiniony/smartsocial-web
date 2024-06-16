@@ -9,6 +9,8 @@ import PaymentPage from '@/pages/payment.page.vue';
 import NotFoundPage from '@/pages/not-found.page.vue';
 import BookingPage from '@/pages/booking.page.vue';
 import BillingsPage from '@/pages/billings.page.vue';
+import LoginPage from '@/pages/login.page.vue';
+import Registration from '@/pages/registration.page.vue';
 
 import { createRouter, createWebHistory } from 'vue-router';
 
@@ -70,7 +72,17 @@ const routes = [
         name: 'Billing',
         component: BillingsPage,
       },
+      {
+        path: 'registration',
+        name: 'Registration',
+        component: Registration,
+      }
     ],
+  }, 
+  {
+    path: '/login',
+    name: 'Login',
+    component: LoginPage,
   }
 ];
 

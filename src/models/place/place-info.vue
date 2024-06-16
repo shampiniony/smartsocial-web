@@ -1,8 +1,8 @@
 <template>
 	<div class="w-[98%] lg:w-4/5 max-w-[1400px] mx-auto py-10 ">
 		<div class="flex flex-col md:flex-row justify-center gap-x-4 items-center md:items-start mb-4 md:mb-0">
-			<img :src="props.place.images[0].src" alt="Музей" class="md:max-w-[500px] md:w-1/2 mb-5 rounded-3xl" />
-			<div class="md:max-w-[500px] md:w-1/2">
+			<img :src="props.place.images[0].src" alt="Музей" class=" md:w-1/2 mb-5 rounded-3xl" />
+			<div class="w-full md:w-1/2">
 				<div>
 					<p class="w-max rounded-xl px-4 py-2 border-2">Музеи</p>
 				</div>

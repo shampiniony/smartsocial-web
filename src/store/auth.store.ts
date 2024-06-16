@@ -2,10 +2,12 @@ import { reactive } from 'vue';
 
 interface AuthStore {
   authenticated: boolean;
-  token: string;
+  accessToken: string | null;
 }
 
 export const auth = reactive<AuthStore>({
-  authenticated: true,
-  token: '',
+  authenticated: false,
+  accessToken: null,
 });
+
+export const isAuthenticated = () => auth.authenticated;

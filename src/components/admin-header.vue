@@ -20,6 +20,7 @@
         <SidebarItem :imgSrc="scheduleIcon" to="/admin/billing" title="Транзакции" :isOpen="isOpen" :isActive="isActive('/admin/billing')"/>
         <SidebarItem :imgSrc="profileIcon" to="/admin/profile" title="Профиль" :isOpen="isOpen" />
         <SidebarItem :imgSrc="plusIcon" to="/admin/add-event" title="Добавить" :isOpen="isOpen" />
+        <SidebarItem :imgSrc="personPlus" to="/admin/registration" title="Регистрация" :isOpen="isOpen" />
 
         <button @click="toggleSidebar"
           class="p-2 rounded-3xl bg-gray-200 absolute right-0 top-6 transform translate-x-1/2">
@@ -40,6 +41,7 @@ import plusIcon from '@/assets/icons/plus.icon.svg'
 import SidebarItem from './sidebar-item.vue'
 import searchIcon from '@/assets/icons/search.icon.svg'
 import logoIcon from '@/assets/logo.svg'
+import personPlus from '@/assets/icons/personplus.svg'
 import { useRoute, useRouter } from 'vue-router'
 
 const isOpen = ref(false)

@@ -1,19 +1,3 @@
-<script setup lang="ts">
-import { MoreHorizontal } from 'lucide-vue-next'
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
-import { Button } from '@/components/ui/button'
-
-defineProps<{
-  payment: {
-    id: string
-  }
-}>()
-
-function copy(id: string) {
-  navigator.clipboard.writeText(id)
-}
-</script>
-
 <template>
   <DropdownMenu>
     <DropdownMenuTrigger as-child>
@@ -23,13 +7,39 @@ function copy(id: string) {
       </Button>
     </DropdownMenuTrigger>
     <DropdownMenuContent align="end">
-      <DropdownMenuLabel>Actions</DropdownMenuLabel>
-      <DropdownMenuItem @click="copy(payment.id)">
-        Copy payment ID
+      <DropdownMenuLabel>Действия</DropdownMenuLabel>
+      <DropdownMenuItem @click="handleCopy(payment.payment_id)">
+        Скопировать TX-ID
       </DropdownMenuItem>
       <DropdownMenuSeparator />
-      <DropdownMenuItem>View customer</DropdownMenuItem>
+      <DropdownMenuItem @click="handleReturn(payment.payment_id)">Оформить возврат</DropdownMenuItem>
       <DropdownMenuItem>View payment details</DropdownMenuItem>
     </DropdownMenuContent>
   </DropdownMenu>
 </template>
+
+<script setup lang="ts">
+import { MoreHorizontal } from 'lucide-vue-next'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
+import { Button } from '@/components/ui/button'
+import { AdminPaymentStatus } from '@/types/admin/admin-payment-status.interface'
+
+import { cancelPayment } from '@/api/payment.api'
+
+const emit = defineEmits(['actionPerformed'])
+defineProps<{
+  payment: AdminPaymentStatus
+}>()
+
+
+
+function handleReturn(id: string) {
+  cancelPayment(id)
+  emit('actionPerformed')
+}
+
+function handleCopy(id: string) {
+  navigator.clipboard.writeText(id)
+  emit('actionPerformed')
+}
+</script>

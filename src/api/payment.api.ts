@@ -6,6 +6,7 @@ import {
 import axios from 'axios';
 
 import { apiUrl } from '@/router/router';
+import { AdminPaymentStatus } from '@/types/admin/admin-payment-status.interface';
 
 export const createPayment = async (
   cart_id: number,
@@ -30,4 +31,19 @@ export const getPaymentStatus = async (
   );
 
   return result.data;
+};
+
+export const cancelPayment = async (payment_id: string) => {
+  await axios.patch(`${apiUrl}/api/v1/payments/cancel/${payment_id}/`);
+};
+
+export const getPayments = async () => {
+  const result = await axios.get<AdminPaymentStatus[]>(
+    `${apiUrl}/api/v1/payments/list/`
+  );
+
+  return result.data.flatMap((x) => ({
+    ...x,
+    created_at: new Date(x.created_at),
+  }));
 };

@@ -11,7 +11,7 @@
           <label class="block text-gray-700 mb-2" for="password">ПАРОЛЬ</label>
           <input v-model="password" type="password" id="password" class="w-full px-3 py-2 border rounded" required>
         </div>
-        <button type="submit" class="w-full bg-logo-blue text-white py-2 rounded">КНОПКА</button>
+        <button type="submit" class="w-full bg-logo-blue text-white py-2 rounded">ВОЙТИ</button>
       </form>
     </div>
   </div>

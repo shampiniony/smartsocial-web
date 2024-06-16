@@ -12,8 +12,8 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { Payment, columns } from './columns'
-import DataTable from './data-table.vue'
+import { Payment, columns } from '@/models/admin/billings/columns'
+import DataTable from '@/models/admin/billings/data-table.vue'
 
 const data = ref<Payment[]>([])
 

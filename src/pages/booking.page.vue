@@ -26,7 +26,7 @@ const fetchData = async () => {
   }
 };
 
-const handleToggleBooking = async (bookingId: string) => {
+const handleToggleBooking = async (bookingId: number) => {
   try {
     await toggleBooking(bookingId);
     await fetchData();

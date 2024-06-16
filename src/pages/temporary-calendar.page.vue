@@ -1,5 +1,4 @@
 <template>
-
   <div class="w-full" @click="handleClick">
     <ScheduleXCalendar
       class="z-0" 

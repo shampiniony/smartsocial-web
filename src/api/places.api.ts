@@ -5,7 +5,7 @@ import { Event as IEvent } from '@/types/client/event.interface';
 
 import { apiUrl } from '@/router/router';
 
-const getPlaces = async (date: Date) => {
+export const getPlaces = async (date: Date) => {
   try {
     const startDate = new Date(date.setHours(0, 0, 0, 0));
     const endDate = new Date(date.setHours(23, 59, 59, 999));
